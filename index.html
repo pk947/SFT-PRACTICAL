@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SciLab – A/L Practicals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Noto+Sans+Sinhala:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--b1:#0b1230;--b2:#2a1b5e;--b3:#0c4a6e;--gl:rgba(255,255,255,.09);--gb:rgba(255,255,255,.22);--tx:#eef2ff;--mu:#a9b4d6;--ac:#67e8f9;--ac2:#c4b5fd;--ok:#86efac;--bad:#fda4af;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme=dark]){--b1:#dbeafe;--b2:#ede9fe;--b3:#cffafe;--gl:rgba(255,255,255,.5);--gb:rgba(255,255,255,.9);--tx:#0f172a;--mu:#475569;--ac:#0369a1;--ac2:#6d28d9;--ok:#15803d;--bad:#be123c;color-scheme:light}}
+:root[data-theme=light]{--b1:#dbeafe;--b2:#ede9fe;--b3:#cffafe;--gl:rgba(255,255,255,.5);--gb:rgba(255,255,255,.9);--tx:#0f172a;--mu:#475569;--ac:#0369a1;--ac2:#6d28d9;--ok:#15803d;--bad:#be123c;color-scheme:light}
+:root[data-theme=dark]{--b1:#0b1230;--b2:#2a1b5e;--b3:#0c4a6e}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{font:15px/1.5 'Space Grotesk','Noto Sans Sinhala',sans-serif;color:var(--tx);background:radial-gradient(60vw 60vh at 12% 8%,var(--b3),transparent),radial-gradient(55vw 55vh at 90% 85%,var(--b2),transparent),var(--b1);background-attachment:fixed;display:flex;flex-direction:column;overflow:hidden}
+.g{background:var(--gl);border:1px solid var(--gb);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-radius:26px;box-shadow:0 10px 40px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.25)}
+header{display:flex;gap:12px;align-items:center;margin:10px 12px 0;padding:8px 14px;flex-wrap:wrap}
+.br{font-weight:700;font-size:20px;letter-spacing:-.02em}.br i{font-style:normal;color:var(--ac)}
+nav{display:flex;gap:6px;overflow-x:auto;flex:1;min-width:0;padding:2px}
+nav b{align-self:center;color:var(--mu);font-weight:600;white-space:nowrap;margin-right:4px}
+button{font:inherit;color:var(--tx);cursor:pointer;border:1px solid var(--gb);background:var(--gl);border-radius:999px;padding:6px 14px;white-space:nowrap}
+button:hover{background:rgba(255,255,255,.2)}button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+button.on{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#06122b;border-color:transparent;font-weight:600}
+button:disabled{opacity:.45;cursor:not-allowed}
+main{flex:1;min-height:0;display:grid;grid-template-columns:1fr 380px;gap:12px;padding:12px}
+#cv{position:relative;overflow:hidden;min-height:260px}#cv canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#hint{position:absolute;left:14px;bottom:10px;font-size:12px;color:var(--mu);pointer-events:none}
+#pn{overflow-y:auto;padding:16px}h1{font-size:20px;line-height:1.25;margin:0 0 10px;letter-spacing:-.01em}
+details{border-top:1px solid var(--gb);padding:8px 0}summary{cursor:pointer;font-weight:600;color:var(--ac)}
+p,li{color:var(--tx)}p{margin:6px 0}ol{padding-left:20px;margin:6px 0}li{margin:3px 0;font-size:14px;color:var(--mu)}
+label{display:block;margin:8px 0 2px;font-size:14px}label b{float:right;color:var(--ac)}
+input[type=range]{width:100%;accent-color:var(--ac)}
+.bt{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.bt button{border-radius:12px;white-space:normal;text-align:left}
+table{width:100%;border-collapse:collapse;font-size:13.5px}td{padding:4px 2px;border-bottom:1px solid var(--gb)}td+td{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:var(--ok)}.bd{color:var(--bad)}.fm{font-size:13px;color:var(--mu);margin-top:6px}
+[hidden]{display:none!important}nav{min-width:240px}h3{margin:14px 0 4px;font-size:15px;color:var(--ac)}
+button{transition:transform .15s,background .15s}button:hover{transform:translateY(-1px)}
+.sx{display:flex;gap:4px;padding:4px;background:rgba(127,127,127,.14);border-radius:999px}.sx button{border:0;background:transparent}.sx button.on{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#06122b;font-weight:600}
+.soon{background:var(--ac2);color:#fff;border-radius:99px;padding:1px 8px;font-size:11px;margin-left:4px}
+nav button{border-radius:14px}#tm{width:40px;height:40px;padding:0;font-size:18px}
+.tb{display:flex;gap:4px;margin:0 0 12px;padding:4px;background:rgba(127,127,127,.14);border-radius:999px}.tb button{flex:1;border:0;background:transparent;padding:8px 6px}.tb button.on{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#06122b;font-weight:600}
+.o{display:block;width:100%;margin:6px 0;text-align:left;border-radius:14px;white-space:normal}.o.right{background:rgba(134,239,172,.3);border-color:var(--ok)}.o.wrong{background:rgba(253,164,175,.3);border-color:var(--bad)}.o:disabled{opacity:1}.sco{font-size:17px}.q{padding:8px 0;border-bottom:1px solid var(--gb)}
+#cs{grid-column:1/-1;display:grid;place-items:center;text-align:center;padding:30px}#cs h1{font-size:28px}#cs p{color:var(--mu)}
+@media(max-width:860px){body{overflow:auto}main{grid-template-columns:1fr;grid-template-rows:60vh auto}#pn{overflow:visible}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<header class="g"><div class="br">Sci<i>Lab</i></div>
+<div id="sx" class="sx"></div><nav id="nv"></nav><button id="tm" aria-label="Theme"></button><button id="lg" aria-label="Language">සිංහල</button></header>
+<main><section id="cv" class="g"><div id="hint"></div></section>
+<aside id="pn" class="g"><h1 id="ttl"></h1><div class="tb" id="tb"></div><div id="v0">
+
+<details open><summary id="s2"></summary><ol id="st"></ol></details>
+<div id="ct"></div>
+<h3 id="s4"></h3><div id="out"></div></div><div id="v1" hidden><div id="th"></div></div><div id="v2" hidden><div id="qz"></div></div></aside><div id="cs" class="g" hidden></div></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);let lang='en';const T=a=>a[lang=='en'?0:1];
+const UI={ph:['Physics','භෞතික විද්‍යාව'],s1:['Theory & apparatus','න්‍යාය හා උපකරණ'],s2:['Procedure','ක්‍රියා පටිපාටිය'],s3:['Controls','පාලක'],s4:['Readings','පාඨාංක'],hint:['Drag to rotate · scroll to zoom','කරකැවීමට ඇදගන්න · විශාල කිරීමට scroll කරන්න']};
+const f=(x,d=1)=>(+x).toFixed(d),rw=r=>`<table>${r.map(x=>`<tr><td>${typeof x[0]=='string'?x[0]:T(x[0])}</td><td>${x[1]}</td></tr>`).join('')}</table>`;
+// ---------- three setup
+const cv=$('#cv'),R=new THREE.WebGLRenderer({antialias:true,alpha:true});R.setPixelRatio(Math.min(2,devicePixelRatio));cv.prepend(R.domElement);
+const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,1,.1,100);let az=.3,el=.25,dist=12,tg=new THREE.Vector3();
+sc.add(new THREE.HemisphereLight(0xffffff,0x334466,.85));const dl=new THREE.DirectionalLight(0xffffff,.9);dl.position.set(5,9,7);sc.add(dl);
+function setCam(){cam.position.set(tg.x+dist*Math.sin(az)*Math.cos(el),tg.y+dist*Math.sin(el),tg.z+dist*Math.cos(az)*Math.cos(el));cam.lookAt(tg)}
+let dr=null;const cd=R.domElement;
+cd.onpointerdown=e=>{dr=[e.clientX,e.clientY];cd.setPointerCapture(e.pointerId)};cd.onpointerup=()=>dr=null;
+cd.onpointermove=e=>{if(!dr)return;az-=(e.clientX-dr[0])*.006;el=Math.max(-.2,Math.min(1.3,el+(e.clientY-dr[1])*.006));dr=[e.clientX,e.clientY]};
+cd.onwheel=e=>{e.preventDefault();dist=Math.max(4,Math.min(30,dist*(1+e.deltaY*.001)))};
+new ResizeObserver(()=>{const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix()}).observe(cv);
+// ---------- helpers
+let root,cur,ci=0,tags=[];const V3=(x,y,z)=>new THREE.Vector3(x,y,z);
+const M=(c,o={})=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.5,metalness:.1},o));
+const GL=M(0xbfe9ff,{transparent:true,opacity:.25,roughness:.05,side:2,depthWrite:false});
+const mesh=(g,m,p,par)=>{const o=new THREE.Mesh(g,m);o.position.set(...p);(par||root).add(o);return o};
+const ug=(g)=>{g.translate(0,.5,0);return g};
+const ln=(n,c,par)=>{const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(Array.from({length:n},()=>V3(0,0,0))),new THREE.LineBasicMaterial({color:c}));l.frustumCulled=false;(par||root).add(l);return l};
+const sl=(l,p)=>{const a=l.geometry.attributes.position;p.forEach((q,i)=>a.setXYZ(i,q[0],q[1],q[2]||0));a.needsUpdate=true;l.visible=true};
+const spr=(o,t,dt,w=40,d=5)=>{o.v+=(t-o.x)*w*dt;o.v*=Math.exp(-d*dt);o.x+=o.v*dt};
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+function drawTag(s){const{a,c}=s.userData,g=c.getContext('2d');g.clearRect(0,0,512,96);g.font='600 38px "Space Grotesk","Noto Sans Sinhala",sans-serif';g.textAlign='center';const w=Math.min(504,g.measureText(T(a)).width+34);g.fillStyle='rgba(8,14,40,.72)';g.beginPath();g.roundRect(256-w/2,18,w,60,18);g.fill();g.fillStyle='#fff';g.fillText(T(a),256,60+2);s.material.map.needsUpdate=true}
+function tag(a,p,par,k=1){const c=document.createElement('canvas');c.width=512;c.height=96;const s=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false,transparent:true}));s.scale.set(2.5*k,.47*k,1);s.position.set(...p);s.renderOrder=9;(par||root).add(s);s.userData={a,c};tags.push(s);drawTag(s);return s}
+function disp(par,p,w,h){const c=document.createElement('canvas');c.width=256;c.height=64;const t=new THREE.CanvasTexture(c),m=mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:t}),p,par);m.draw=v=>{const g=c.getContext('2d');g.fillStyle='#0a1a12';g.fillRect(0,0,256,64);g.fillStyle='#4ade80';g.font='bold 40px monospace';g.textAlign='center';g.fillText(v,128,46);t.needsUpdate=true};m.draw('0.00');return m}
+function calo(par,x,r=1,h=1.7){const g=new THREE.Group();g.position.set(x,0,0);par.add(g);const cm=M(0xc9793a,{metalness:.8,roughness:.3,side:2});mesh(new THREE.CylinderGeometry(r,r,h,40,1,true),cm,[0,h/2,0],g);mesh(new THREE.CylinderGeometry(r,r,.05,40),cm,[0,.02,0],g);
+const w=mesh(ug(new THREE.CylinderGeometry(r*.94,r*.94,1,40)),M(0x4aa8ff,{transparent:true,opacity:.6}),[0,.05,0],g);w.scale.y=.001;return{g,w}}
+function thermo(par,p){const g=new THREE.Group();g.position.set(...p);par.add(g);mesh(new THREE.CylinderGeometry(.06,.06,2.6,10),GL,[0,1.3,0],g);const c=mesh(ug(new THREE.CylinderGeometry(.035,.035,1,8)),M(0xe11d48),[0,.1,0],g);mesh(new THREE.SphereGeometry(.1,12,8),M(0xe11d48),[0,.1,0],g);return{g,c}}
+const setT=(o,T)=>o.c.scale.y=.2+clamp(T,0,100)/100*2.2;
+const gnd=(y)=>mesh(new THREE.CylinderGeometry(9,9,.1,64),M(0x1e293b,{transparent:true,opacity:.55,metalness:.3}),[0,y-.05,0]);
+// ---------- practicals
+const P=[
+{n:['Law of Parallelogram of Forces','බල සමාන්තරාස්‍ර නියමය'],
+th:['If two forces acting at a point are represented in magnitude and direction by two adjacent sides of a parallelogram drawn from that point, their resultant is represented by the diagonal through the same point.<div class=fm>Apparatus: parallelogram board, pair of pulleys, known loads & pans, light inextensible threads, white paper & pins, metre rule, set square, pencil.</div>','එක ලක්ෂ්‍යයක ක්‍රියා කරන බල දෙකක විශාලත්වය හා දිශාව, එම ලක්ෂ්‍යයෙන් ඇඳි සමාන්තරාස්‍රයක බාහු දෙකකින් නිරූපණය වේ නම්, ඒවායේ සම්ප්‍රයුක්තය එම ලක්ෂ්‍යය හරහා ඇඳි විකර්ණයෙන් නිරූපණය වේ.<div class=fm>උපකරණ: සමාන්තරාස්‍ර ලෑල්ල, කප්පි යුගලයක්, දන්නා භාර හා භාජන, සැහැල්ලු අවිතන්‍ය නූල්, සුදු කඩදාසි හා ඇණ, මීටර රූල, සෙට් ස්කුවෙයාර්, පැන්සල.</div>'],
+st:[['Set the board vertical; pulleys with minimal friction.','Pin white paper on the board.','Join three threads at a knot, pass two over the pulleys and hang loads P, Q and S.','Adjust the loads (sliders) until the knot is at rest.','Mark the thread directions on the paper (pins + pencil).','Complete the parallelogram to a scale — press the button.','Check the diagonal equals S in size and is opposite in direction.'],
+['ලෑල්ල සිරස්ව සවි කරන්න; කප්පිවල ඝර්ෂණය අවම කරන්න.','ලෑල්ලේ සුදු කඩදාසි ඇණ ගසන්න.','නූල් තුනක් එක ගැටයකට සම්බන්ධ කර, දෙකක් කප්පි උඩින් යවා P, Q, S භාර එල්ලන්න.','ගැට ලක්ෂ්‍යය නිශ්චලව පවතින තෙක් භාර සකසන්න (slider).','නූල්වල දිශා කඩදාසියේ සලකුණු කරන්න.','පරිමාණයකට සමාන්තරාස්‍රය සම්පූර්ණ කරන්න — බොත්තම ඔබන්න.','විකර්ණය S ට විශාලත්වයෙන් සමාන හා දිශාවෙන් ප්‍රතිවිරුද්ධ දැයි පරීක්ෂා කරන්න.']],
+ctl:[{k:'P',l:['Load P (g)','භාරය P (g)'],min:60,max:300,step:5,v:150,u:' g'},{k:'Q',l:['Load Q (g)','භාරය Q (g)'],min:60,max:300,step:5,v:200,u:' g'},{k:'S',l:['Load S (g)','භාරය S (g)'],min:60,max:300,step:5,v:250,u:' g'}],
+btn:[{l:()=>cur.s.show?['Hide parallelogram','සමාන්තරාස්‍රය සඟවන්න']:['Mark paper & draw parallelogram','සමාන්තරාස්‍රය අඳින්න'],f:()=>cur.s.show=!cur.s.show}],
+init:()=>({show:false,x:{x:0,v:0},y:{x:0,v:0},o:{}}),cam:[0,-.3,13,0,.1],
+build(r){const s=this.s,d=3.45,H=2.4;s.d=d;s.H=H;mesh(new THREE.BoxGeometry(6.4,5.2,.2),M(0x5f8f86),[0,0,0]);mesh(new THREE.PlaneGeometry(4.6,3.9),M(0xffffff,{roughness:.9}),[0,-.2,.11]);
+for(const sx of[-1,1]){mesh(new THREE.CylinderGeometry(.25,.25,.12,28),M(0x222233,{metalness:.7}),[sx*d,H,.12]).rotation.x=Math.PI/2;mesh(new THREE.CylinderGeometry(.12,.12,3.2,12),M(0x94a3b8,{metalness:.8}),[sx*1.5,-4.2,0])}
+mesh(new THREE.BoxGeometry(5,.2,1.4),M(0x94a3b8,{metalness:.8}),[0,-5.9+1.7,0]);
+s.w=[0,1].map(i=>mesh(ug(new THREE.CylinderGeometry(.3,.3,1,24)),M(i?0x3b82f6:0xef4444,{metalness:.6}),[0,0,.15]));
+s.b=mesh(new THREE.BoxGeometry(.6,1,.5),M(0x38bdf8,{metalness:.3}),[0,0,.3]);s.kn=mesh(new THREE.SphereGeometry(.07,12,8),M(0xfacc15),[0,0,.15]);
+s.t=[ln(4,0xffffff),ln(4,0xffffff),ln(2,0xffffff)];s.pl=[ln(2,0xef4444),ln(2,0x3b82f6),ln(2,0x94a3b8),ln(2,0x94a3b8),ln(2,0xfacc15),ln(2,0x22c55e)];
+s.tg=[tag(['P','P'],[0,0,.5],0,.5),tag(['Q','Q'],[0,0,.5],0,.5),tag(['S','S'],[0,0,.5],0,.5),tag(['Resultant R','සම්ප්‍රයුක්තය R'],[0,0,.5],0,.8)]},
+tick(dt){const s=this.s,{P,Q,S,d,H}=s;let ok=P+Q>S&&P+S>Q&&Q+S>P,th=0,a=0,b=0,tx=0,ty=H-.6;
+if(ok){const c=(S*S-P*P-Q*Q)/(2*P*Q);th=Math.acos(clamp(c,-1,1));a=Math.atan2(Q*Math.sin(th),P+Q*c);b=th-a;if(a>1.4||b>1.4||th<.12)ok=false;else{const hh=Math.min(2*d/(Math.tan(a)+Math.tan(b)),4.9);ty=H-hh;tx=-d+Math.tan(a)*hh}}
+spr(s.x,tx,dt);spr(s.y,ty,dt);const kx=s.x.x,ky=s.y.x,K=[kx,ky,.15];s.kn.position.set(...K);
+const U=[[-d-kx,H-ky],[d-kx,H-ky]].map(v=>{const l=Math.hypot(...v);return[v[0]/l,v[1]/l,l]}),m=[P,Q],hs=[];
+for(let i=0;i<2;i++){const sx=i?1:-1,drop=Math.max(.3,8-U[i][2]),h=.2+m[i]*.0016;hs.push(h);s.w[i].scale.y=h;s.w[i].position.set(sx*3.7,H-drop-h,.15);sl(s.t[i],[K,[sx*d,H+.25,.15],[sx*3.7,H,.15],[sx*3.7,H-drop,.15]]);s.tg[i].position.set(sx*3.7,H-drop+.4,.4)}
+const hb=.2+S*.0016;s.b.scale.y=hb;s.b.position.set(kx,ky-1-hb/2,.3);sl(s.t[2],[K,[kx,ky-1,.3]]);s.tg[2].position.set(kx,ky-1.4-hb,.5);
+const k=.012,A=[kx+U[0][0]*P*k,ky+U[0][1]*P*k,.13],B=[kx+U[1][0]*Q*k,ky+U[1][1]*Q*k,.13],C=[A[0]+B[0]-kx,A[1]+B[1]-ky,.13],Sp=[kx,ky-S*k,.13],O=[kx,ky,.13];
+const show=s.show&&ok;[[O,A],[O,B],[A,C],[B,C],[O,C],[O,Sp]].forEach((p,i)=>{if(show)sl(s.pl[i],p);else s.pl[i].visible=false});s.tg[3].visible=show;s.tg[3].position.set(C[0],C[1]+.3,.5);
+s.o={ok,th:th*57.2958,a:a*57.2958,b:b*57.2958,R:Math.sqrt(P*P+Q*Q+2*P*Q*Math.cos(th))}},
+out(){const o=this.s.o,s=this.s;if(!o.ok)return`<p class=bd>${T(['Equilibrium not possible: P, Q, S must satisfy the triangle rule (each less than the sum of the other two) and stay inside the board.','සමතුලිතතාව කළ නොහැක: P, Q, S ත්‍රිකෝණ නියමය සපුරාලිය යුතුය.'])}</p>`;
+return rw([[['Angle between P and Q','P හා Q අතර කෝණය'],f(o.th)+'°'],[['Angle of P / Q from R','R සිට P / Q කෝණ'],f(o.a)+'° / '+f(o.b)+'°'],[['Resultant R (parallelogram)','සම්ප්‍රයුක්තය R (සමාන්තරාස්‍ර)'],f(o.R)+' g'],[['Third force S','තුන්වන බලය S'],s.S+' g'],[['Difference |R − S|','වෙනස |R − S|'],f(Math.abs(o.R-s.S),2)+' g']])+`<p class=ok>✔ ${T(['R equals S and acts opposite to it: law verified.','R, S ට සමාන හා ප්‍රතිවිරුද්ධයි: නියමය සත්‍යාපිතයි.'])}</p>`}},
+
+{n:['Principle of Moments','ඝූර්ණ මූලධර්මය'],
+th:['For a body in equilibrium, the sum of clockwise moments about any point equals the sum of anticlockwise moments: W₁L₁ = W₂L₂, so W₂ = W₁L₁/L₂.<div class=fm>Apparatus: metre rule, knife-edge, known mass W₁, unknown mass W₂, light thread.</div>','සමතුලිත වස්තුවක් සඳහා ඕනෑම ලක්ෂ්‍යයක් වටා දක්ෂිණාවර්ත ඝූර්ණවල sum, වාමාවර්ත ඝූර්ණවල sum ට සමාන වේ: W₁L₁ = W₂L₂, එබැවින් W₂ = W₁L₁/L₂.<div class=fm>උපකරණ: මීටර රූල, පිහි දාරය, දන්නා ස්කන්ධය W₁, නොදන්නා ස්කන්ධය W₂, සැහැල්ලු නූල්.</div>'],
+st:[['Balance the bare rule on the knife-edge and mark the centre (50 cm).','Hang the known weight W₁ on the left and unknown W₂ on the right.','Vary L₁ until the rule is horizontal; read L₁ and L₂.','Press “Record” — repeat for at least 5 different values of L₂.','Calculate W₂ = W₁L₁/L₂ for each reading and take the mean.'],['හිස් රූල පිහි දාරයේ තුලනය කර කේන්ද්‍රය (50 cm) සලකුණු කරන්න.','වම් පැත්තේ දන්නා W₁ ද දකුණු පැත්තේ නොදන්නා W₂ ද එල්ලන්න.','රූල තිරස් වන තෙක් L₁ වෙනස් කර L₁, L₂ කියවන්න.','“සටහන් කරන්න” ඔබන්න — L₂ අගයන් 5කට වැඩි ගණනකට නැවත කරන්න.','එක් එක් පාඨාංකයට W₂ = W₁L₁/L₂ ගණනය කර මධ්‍යනය ගන්න.']],
+ctl:[{k:'W1',l:['Known mass W₁ (g)','දන්නා ස්කන්ධය W₁ (g)'],min:50,max:200,step:10,v:100,u:' g'},{k:'L1',l:['Distance L₁ (cm)','දුර L₁ (cm)'],min:5,max:48,step:.5,v:20,u:' cm'},{k:'L2',l:['Distance L₂ (cm)','දුර L₂ (cm)'],min:5,max:48,step:.5,v:20,u:' cm'}],
+btn:[{l:()=>['Record reading','පාඨාංකය සටහන් කරන්න'],f(){const s=cur.s;if(s.bal){s.rows.push([s.L1,s.L2,s.W1*s.L1/s.L2])}else{s.note=1;setTimeout(()=>s.note=0,2200)}}},{l:()=>cur.s.rev?['Hide W₂','W₂ සඟවන්න']:['Reveal true W₂','සත්‍ය W₂ පෙන්වන්න'],f:()=>cur.s.rev=!cur.s.rev},{l:()=>['New unknown mass','නව නොදන්නා ස්කන්ධයක්'],f(){const s=cur.s;s.W2=60*Math.round((60+Math.random()*120)/10)/6;s.rows=[];s.rev=false}}],
+init:()=>({W2:120,rows:[],a:{x:0,v:0},rev:false}),cam:[0,1.4,14,0,.2],
+build(r){const s=this.s;gnd(0);mesh(new THREE.BoxGeometry(3,.2,2),M(0x475569),[0,.1,0]);mesh(new THREE.BoxGeometry(.25,1.2,.25),M(0x94a3b8,{metalness:.8}),[0,.8,0]);mesh(new THREE.CylinderGeometry(.16,.16,.5,3),M(0xe2e8f0,{metalness:.9}),[0,1.4,0]).rotation.x=Math.PI/2;
+s.rg=new THREE.Group();s.rg.position.set(0,1.62,0);r.add(s.rg);mesh(new THREE.BoxGeometry(10,.22,.5),M(0xe6c48a,{roughness:.7}),[0,0,0],s.rg);
+const c=document.createElement('canvas');c.width=2048;c.height=64;const g=c.getContext('2d');g.fillStyle='#e6c48a';g.fillRect(0,0,2048,64);g.fillStyle='#222';g.font='20px sans-serif';g.textAlign='center';for(let i=0;i<=100;i++){const x=20+i*20.08;g.fillRect(x,0,2,i%10?10:22);if(i%10==0)g.fillText(i,x,44)}
+mesh(new THREE.PlaneGeometry(10,.22),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c)}),[0,0,.251],s.rg);
+s.h=[0,1].map(i=>{const sub=new THREE.Group();s.rg.add(sub);mesh(new THREE.CylinderGeometry(.01,.01,1.2,6),M(0x111111),[0,-.6,0],sub);const w=mesh(ug(new THREE.CylinderGeometry(.34,.34,1,24)),M(i?0x64748b:0xef4444,{metalness:.5}),[0,0,0],sub);tag(i?['W₂ (unknown)','W₂ (නොදන්නා)']:['W₁ (known)','W₁ (දන්නා)'],[0,.7,.4],sub,.7);return{sub,w}});
+tag(['Knife-edge','පිහි දාරය'],[0,.45,.5],0,.7)},
+tick(dt){const s=this.s,M1=s.W1*s.L1,M2=s.W2*s.L2,rel=(M1-M2)/(M1+M2);s.bal=Math.abs(rel)<.012;spr(s.a,clamp(rel*3,-.3,.3),dt,30,3);s.rg.rotation.z=s.a.x;
+[[s.W1,s.L1,-1],[s.W2,s.L2,1]].forEach(([w,L,sg],i)=>{const h=s.h[i],ht=.2+w*.004;h.sub.position.x=sg*L*.1;h.sub.rotation.z=-s.a.x;h.w.scale.y=ht;h.w.position.y=-1.2-ht})},
+out(){const s=this.s,m=s.rows.length?s.rows.reduce((a,r)=>a+r[2],0)/s.rows.length:0;
+return`<p class=${s.bal?'ok':'bd'}>${s.bal?T(['✔ Balanced horizontally','✔ තිරස්ව තුලිතයි']):T(['Not balanced — adjust L₁ or L₂','තුලිත නැත — L₁ හෝ L₂ වෙනස් කරන්න'])}</p>${s.note?`<p class=bd>${T(['Balance the rule first.','මුලින් රූල තුලනය කරන්න.'])}</p>`:''}`+
+`<table><tr><td>#</td><td>L₁</td><td>L₂</td><td>W₂=W₁L₁/L₂</td></tr>${s.rows.map((r,i)=>`<tr><td>${i+1}</td><td>${f(r[0])}</td><td>${f(r[1])}</td><td>${f(r[2])} g</td></tr>`).join('')}</table>`+(s.rows.length?`<p>${T(['Mean W₂','මධ්‍යනය W₂'])} = <b>${f(m)} g</b> ${s.rows.length<5?`<span class=bd>(${T(['need ≥ 5 readings','පාඨාංක ≥ 5ක් අවශ්‍යයි'])})</span>`:''}</p>`:'')+(s.rev?`<p>${T(['True W₂','සත්‍ය W₂'])} = ${f(s.W2)} g</p>`:'')}},
+
+{n:['Venturi Tube – Bernoulli’s Principle','වෙන්චුරි නළය – බර්නූලි මූලධර්මය'],
+th:['In steady horizontal flow, A₁v₁ = A₂v₂ (continuity) and p + ½ρv² = constant. Where the tube is narrow the speed is higher and pressure (piezometer water level) is lower.<div class=fm>Apparatus: Venturi tube, piezometer tubes, water supply, flow meter.</div>','තිරස් ස්ථිර ගලනයක A₁v₁ = A₂v₂ (අඛණ්ඩතා සමීකරණය) හා p + ½ρv² = නියතයකි. නළය පටු තැන වේගය වැඩි වන අතර පීඩනය (පීසෝමීටර ජල මට්ටම) අඩු වේ.<div class=fm>උපකරණ: වෙන්චුරි නළය, පීසෝමීටර නළ, ජල සැපයුම, ගලන මීටරය.</div>'],
+st:[['Let water flow steadily through the horizontal tube.','Read the water levels in piezometers A (wide), B (narrow), C (wide).','Level in A is higher than in B: pressure is lower where speed is higher.','Increase the flow rate and note how Δh grows.','Compute v₁ from Δh and compare with Q/A₁.'],['තිරස් නළය හරහා ජලය ස්ථිරව ගලන්න.','පීසෝමීටර A (පළල), B (පටු), C (පළල) වල ජල මට්ටම් කියවන්න.','A හි මට්ටම B ට වඩා ඉහළයි: වේගය වැඩි තැන පීඩනය අඩුයි.','ගලන ශීඝ්‍රතාව වැඩි කර Δh වැඩි වන ආකාරය සටහන් කරන්න.','Δh වලින් v₁ ගණනය කර Q/A₁ සමඟ සසඳන්න.']],
+ctl:[{k:'Q',l:['Flow rate Q (cm³/s)','ගලන ශීඝ්‍රතාව Q (cm³/s)'],min:40,max:160,step:5,v:100,u:' cm³/s'},{k:'d2',l:['Neck diameter (cm)','පටු කොටසේ විෂ්කම්භය (cm)'],min:1,max:1.8,step:.1,v:1.2,u:' cm'}],btn:[],
+init:()=>({h:[30,30,30],t:0,ld:0}),cam:[0,2,13,.25,.2],
+build(r){const s=this.s;gnd(0);mesh(new THREE.BoxGeometry(9,.3,2),M(0x475569),[0,.15,0]);
+const gr=new THREE.GridHelper(10,20,0x7dd3fc,0x7dd3fc);gr.material.transparent=true;gr.material.opacity=.15;gr.rotation.x=Math.PI/2;gr.position.set(0,3,-.9);r.add(gr);
+s.t=new THREE.Mesh(new THREE.BufferGeometry(),GL);s.t.position.y=1.2;s.t.rotation.z=Math.PI/2;r.add(s.t);
+s.w=new THREE.Mesh(new THREE.BufferGeometry(),M(0x38bdf8,{transparent:true,opacity:.35,depthWrite:false}));s.w.position.y=1.2;s.w.rotation.z=Math.PI/2;r.add(s.w);
+s.pz=[-2.2,0,2.2].map((x,i)=>{const g=new THREE.Group();g.position.x=x;r.add(g);mesh(ug(new THREE.CylinderGeometry(.09,.09,3.5,14,1,true)),GL,[0,0,0],g);const w=mesh(ug(new THREE.CylinderGeometry(.07,.07,1,14)),M(0x38bdf8,{transparent:true,opacity:.8}),[0,0,0],g);tag([['A (wide)','A (පළල)'],['B (narrow)','B (පටු)'],['C (wide)','C (පළල)']][i],[0,3.8,0],g,.7);return{g,w}});
+const N=140,pos=new Float32Array(N*3);s.xs=Array.from({length:N},()=>(Math.random()-.5)*6.8);s.an=Array.from({length:N},()=>Math.random()*6.28);s.fr=Array.from({length:N},()=>Math.sqrt(Math.random()));
+s.pt=new THREE.Points(new THREE.BufferGeometry().setAttribute('position',new THREE.BufferAttribute(pos,3)),new THREE.PointsMaterial({color:0xffffff,size:.08}));s.pt.frustumCulled=false;r.add(s.pt);tag(['Flow ➜','ගලනය ➜'],[-3.8,2.3,0],0,.8)},
+tick(dt){const s=this.s,rr=x=>{x=Math.abs(x);return x<=.6?s.d2*.25:x>=1.5?.6:s.d2*.25+(.6-s.d2*.25)*(x-.6)/.9};
+if(s.ld!=s.d2){s.ld=s.d2;const lt=k=>{const p=[];for(let x=-3.4;x<=3.41;x+=.1)p.push(new THREE.Vector2(rr(x)*k,x));return new THREE.LatheGeometry(p,32)};s.t.geometry.dispose();s.t.geometry=lt(1);s.w.geometry=lt(.93)}
+const A1=Math.PI*1.2**2,A2=Math.PI*(s.d2/2)**2,g=981,v1=s.Q/A1,v2=s.Q/A2,hd=45,tg=[hd-v1*v1/2/g,hd-v2*v2/2/g,hd-v1*v1/2/g-.06*v2*v2/2/g].map(x=>Math.max(1,x));
+s.pz.forEach((p,i)=>{s.h[i]+=(tg[i]-s.h[i])*(1-Math.exp(-4*dt));const x=p.g.position.x;p.g.position.y=1.2+rr(x)*.9;p.w.scale.y=s.h[i]*.07});
+const a=s.pt.geometry.attributes.position;for(let i=0;i<s.xs.length;i++){let x=s.xs[i],v=s.Q/(Math.PI*(rr(x)/.5)**2);x+=v*.02*dt;if(x>3.4)x=-3.4;s.xs[i]=x;const r=rr(x)*.88*s.fr[i];a.setXYZ(i,x,1.2+Math.cos(s.an[i])*r,Math.sin(s.an[i])*r)}a.needsUpdate=true;
+s.o={A1,A2,v1,v2,h:[...s.h],g}},
+out(){const o=this.s.o;if(!o.h)return'';const[a,b,c]=o.h,dh=a-b,v1e=o.A2*Math.sqrt(2*o.g*dh/(o.A1**2-o.A2**2)),tot=(h,v)=>f(h+v*v/2/o.g);
+return rw([[['Area A₁ / A₂','වර්ගඵල A₁ / A₂'],f(o.A1,2)+' / '+f(o.A2,2)+' cm²'],[['Speed v₁ / v₂ (Q/A)','වේගය v₁ / v₂ (Q/A)'],f(o.v1)+' / '+f(o.v2)+' cm/s'],[['Levels h_A / h_B / h_C','මට්ටම් h_A / h_B / h_C'],f(a)+' / '+f(b)+' / '+f(c)+' cm'],[['Head difference Δh = h_A − h_B','Δh = h_A − h_B'],f(dh)+' cm'],[['v₁ from Δh','Δh වලින් v₁'],f(v1e)+' cm/s'],[['h + v²/2g at A / B','A / B හි h + v²/2g'],tot(a,o.v1)+' / '+tot(b,o.v2)+' cm']])+`<p class=ok>✔ ${T(['Equal totals at A and B: Bernoulli’s principle holds.','A හා B හි එකතු සමානයි: බර්නූලි මූලධර්මය සත්‍යයි.'])}</p>`}},
+
+{n:['Specific Latent Heat of Fusion of Ice','අයිස් ද්‍රවීකරණයේ විශිෂ්ට ගුප්ත තාපය'],
+th:['Specific latent heat of fusion L_f is the heat needed to change 1 kg of ice at 0 °C into water at 0 °C. Mixing method: heat lost by warm water + calorimeter = heat to melt ice + heat to warm melted ice to θ₂.<div class=fm>(m_w c_w + m₁c_c)(θ₁ − θ₂) = m_i L_f + m_i c_w θ₂<br>Apparatus: copper calorimeter & stirrer, electronic balance, thermometer, dry ice cubes, filter paper, warm water.</div>','විශිෂ්ට ද්‍රවීකරණ ගුප්ත තාපය L_f යනු 0 °C හි අයිස් 1 kg ක් 0 °C හි ජලය බවට පත් කිරීමට අවශ්‍ය තාපයයි. මිශ්‍ර කිරීමේ ක්‍රමය: උණුසුම් ජලය හා කැලරිමීටරය නැති කළ තාපය = අයිස් දියවීමට හා දියවූ ජලය θ₂ දක්වා රත් වීමට අවශ්‍ය තාපය.<div class=fm>(m_w c_w + m₁c_c)(θ₁ − θ₂) = m_i L_f + m_i c_w θ₂<br>උපකරණ: කැලරිමීටරය හා කලවමක්, ඉලෙක්ට්‍රොනික තුලාව, උෂ්ණත්වමානය, වියළි අයිස් කැට, පෙරහන් කඩදාසි, උණුසුම් ජලය.</div>'],
+st:[['Weigh the empty, dry calorimeter (m₁).','Half-fill with warm water (5–10 °C above room) and weigh again (m₂); m_w = m₂ − m₁.','Read the initial temperature θ₁.','Add dried ice cubes and stir until all the ice melts.','Read the lowest temperature θ₂ and weigh (m₃); m_i = m₃ − m₂.','Calculate L_f.'],['හිස් වියළි කැලරිමීටරය කිරන්න (m₁).','උණුසුම් ජලය (කාමර උෂ්ණත්වයට වඩා 5–10 °C ඉහළ) අඩකට පමණ දමා නැවත කිරන්න (m₂); m_w = m₂ − m₁.','ආරම්භක උෂ්ණත්වය θ₁ කියවන්න.','වියළි අයිස් කැට දමා සියල්ල දියවන තෙක් කලවම් කරන්න.','අවම උෂ්ණත්වය θ₂ කියවා කිරන්න (m₃); m_i = m₃ − m₂.','L_f ගණනය කරන්න.']],
+ctl:[{k:'mw',l:['Warm water mass (g)','උණුසුම් ජල ස්කන්ධය (g)'],min:100,max:200,step:10,v:150,u:' g'},{k:'th1',l:['Water temperature θ₁ (°C)','ජල උෂ්ණත්වය θ₁ (°C)'],min:28,max:40,step:1,v:32,u:' °C'},{k:'mi',l:['Ice mass (g)','අයිස් ස්කන්ධය (g)'],min:15,max:50,step:5,v:30,u:' g'}],lock:true,
+btn:[{l:()=>[['1. Weigh empty calorimeter (m₁)','2. Add warm water, weigh (m₂)','3. Insert thermometer, read θ₁','4. Add dry ice & stir','5. Read θ₂ & weigh (m₃)','Restart'],['1. හිස් කැලරිමීටරය කිරන්න (m₁)','2. උණුසුම් ජලය දමා කිරන්න (m₂)','3. උෂ්ණත්වමානය දමා θ₁ කියවන්න','4. වියළි අයිස් දමා කලවම් කරන්න','5. θ₂ කියවා කිරන්න (m₃)','නැවත ආරම්භ කරන්න']].map((a,i)=>a[cur.s.step])[lang=='en'?0:1].split?[[ 'x']][0]:0,f(){}}],
+init:()=>({step:0,m1:+(55+Math.random()*10).toFixed(1),T:32,cx:.4,wl:0,k:0,melt:0,a:0,th2:0}),cam:[0,1.3,10,0,.3],
+build(r){const s=this.s;mesh(new THREE.BoxGeometry(11,.3,5),M(0x64748b),[0,-.15,0]);mesh(new THREE.BoxGeometry(2.4,.35,1.8),M(0x9d2f8f),[-2.6,.175,0]);mesh(new THREE.BoxGeometry(1.6,.06,1.2),M(0xe5e7eb,{metalness:.5}),[-2.6,.38,0]);s.bd=disp(r,[-2.6,.17,.91],1.4,.3);
+mesh(new THREE.CylinderGeometry(.8,.7,.15,24),M(0xe2e8f0),[3.4,.08,0]);const c=calo(r,.4);s.c=c;s.th=thermo(c.g,[.35,.15,0]);s.th.g.visible=false;
+s.sr=mesh(new THREE.CylinderGeometry(.03,.03,2.4,8),M(0x94a3b8,{metalness:.8}),[-.3,1.3,0],c.g);
+s.ic=Array.from({length:6},(_,i)=>mesh(new THREE.BoxGeometry(1,1,1),M(0xe0f7ff,{transparent:true,opacity:.8,roughness:.1}),[3.4,.5,0]));
+tag(['Electronic balance','ඉලෙක්ට්‍රොනික තුලාව'],[-2.6,1.2,0],0,.8);tag(['Ice cubes','අයිස් කැට'],[3.4,1.5,0],0,.7)},
+tick(dt,t){const s=this.s,H=1.3,tx=s.step>=1?-2.6:.4;s.cx+=(tx-s.cx)*(1-Math.exp(-3*dt));s.c.g.position.set(s.cx,.41*clamp((.4-s.cx)/3,0,1),0);
+const wt=s.step>=2?(s.mw+(s.step>=5?0:0))/150*.85:0;s.wl+=(wt-s.wl)*(1-Math.exp(-3*dt));s.c.w.scale.y=Math.max(.001,s.wl);
+s.th.g.visible=s.step>=3;if(s.step<4)s.T=s.th1;else s.T+=(s.th2-s.T)*(1-Math.exp(-.35*dt));setT(s.th,s.T);
+const m2=s.m1+s.mw;s.bd.val=s.step==0?0:s.step<2?s.m1:s.step<5?m2:m2+s.mi;if(s.bd.last!=s.bd.val){s.bd.last=s.bd.val;s.bd.draw(f(s.bd.val,2))}
+if(s.step>=4){s.k=Math.min(1,s.k+dt/1.6);if(s.k>=1)s.melt=Math.min(1,s.melt+dt/14)}
+const stir=s.step==4&&s.melt<1;if(stir)s.a+=dt*5;s.sr.position.set(stir?Math.cos(s.a)*.35:-.3,1.3,stir?Math.sin(s.a)*.35:0);
+const sz=.26*Math.cbrt(s.mi/30)*(1-s.melt*.97),top=s.c.g.position.y+.05+s.wl;
+s.ic.forEach((m,i)=>{const sx=3.4+(i%3)*.3-.3,sy=.5+(i>>1)*.1,sz2=((i>>1)%2)*.3,lx=s.cx+((i%3)-1)*.32,lz=(i>2?.3:-.3),k=s.k;m.position.set(sx+(lx-sx)*k,sy+(top-sy)*k+Math.sin(Math.PI*k)*1.6+(k>=1?Math.sin(t*2+i)*.02:0),sz2+(lz-sz2)*k);m.scale.setScalar(Math.max(.001,sz));m.rotation.y=i+k*3})},
+out(){const s=this.s,st=s.step,m2=s.m1+s.mw,r=[];if(st>=1)r.push([['Empty calorimeter m₁','හිස් කැලරිමීටරය m₁'],f(s.m1)+' g']);if(st>=2)r.push([['With water m₂','ජලය සමඟ m₂'],f(m2)+' g'],[['Water m_w = m₂ − m₁','ජලය m_w'],f(s.mw)+' g']);if(st>=3)r.push([['Initial temp θ₁','ආරම්භක උෂ්ණත්වය θ₁'],f(s.th1)+' °C']);
+if(st==4)r.push([['Temperature now','දැන් උෂ්ණත්වය'],f(s.T)+' °C']);if(st>=5){const C=s.mw*4.2+s.m1*.39,t2=+f(s.th2),Lf=(C*(s.th1-t2)-s.mi*4.2*t2)/s.mi;r.push([['Final temp θ₂','අවසාන උෂ්ණත්වය θ₂'],f(t2)+' °C'],[['With ice m₃','අයිස් සමඟ m₃'],f(m2+s.mi)+' g'],[['Ice m_i = m₃ − m₂','අයිස් m_i'],f(s.mi)+' g']);
+return rw(r)+`<p>L_f = <b>${f(Lf,0)} J/g</b> (${f(Lf*1000/1e5,2)}×10⁵ J/kg)</p><p class=${Math.abs(Lf-334)<25?'ok':'bd'}>${T(['Accepted value 334 J/g; error','පිළිගත් අගය 334 J/g; දෝෂය'])} ${f(Math.abs(Lf-334)/3.34,1)}%</p><div class=fm>c_w = 4.2 J/g·K, c_c = 0.39 J/g·K</div>${s.warn?`<p class=bd>${T(['Too much ice: some remained unmelted. Use less ice.','අයිස් වැඩියි: සමහරක් දිය නොවිණි.'])}</p>`:''}`}return rw(r)}},
+
+{n:['Specific Latent Heat of Vaporisation of Water','ජලයේ වාෂ්පීකරණයේ විශිෂ්ට ගුප්ත තාපය'],
+th:['Specific latent heat of vaporisation L_v is the heat needed to change 1 kg of liquid to vapour at its boiling point. Dry steam at 100 °C is condensed in cool water: heat gained by water + calorimeter = heat lost by steam.<div class=fm>(m_w c_w + m₁c_c)(θ₂ − θ₁) = m_s L_v + m_s c_w (100 − θ₂)<br>Apparatus: boiler, burner, steam trap, calorimeter with lagging, lid, thermometer, stirrer, balance.</div>','විශිෂ්ට වාෂ්පීකරණ ගුප්ත තාපය L_v යනු තාපාංකයේදී ද්‍රව 1 kg ක් වාෂ්ප බවට පත් කිරීමට අවශ්‍ය තාපයයි. 100 °C වියළි වාෂ්ප සිසිල් ජලයේ ඝනීභවනය කරයි: ජලය හා කැලරිමීටරය ලබාගත් තාපය = වාෂ්ප නැති කළ තාපය.<div class=fm>(m_w c_w + m₁c_c)(θ₂ − θ₁) = m_s L_v + m_s c_w (100 − θ₂)<br>උපකරණ: බොයිලරය, දහන්නාව, වාෂ්ප උගුල, ආවරණය සහිත කැලරිමීටරය, පියන, උෂ්ණත්වමානය, කලවම, තුලාව.</div>'],
+st:[['Weigh the calorimeter (m₁) and with water (m₂); read θ₁.','Light the burner and boil the water in the boiler.','When steam is steady, pass dry steam (via the steam trap) into the water; stir.','Stop when the temperature has risen by about 15 °C; read θ₂.','Weigh again (m₃); steam mass m_s = m₃ − m₂.','Calculate L_v.'],['කැලරිමීටරය (m₁) හා ජලය සමඟ (m₂) කිරා θ₁ කියවන්න.','දහන්නාව දල්වා බොයිලරයේ ජලය නටවන්න.','වාෂ්ප ස්ථිර වූ විට වාෂ්ප උගුල හරහා වියළි වාෂ්ප ජලයට යවන්න; කලවම් කරන්න.','උෂ්ණත්වය 15 °C පමණ ඉහළ ගිය විට නවත්වා θ₂ කියවන්න.','නැවත කිරන්න (m₃); වාෂ්ප ස්කන්ධය m_s = m₃ − m₂.','L_v ගණනය කරන්න.']],
+ctl:[{k:'mw',l:['Water in calorimeter (g)','කැලරිමීටරයේ ජලය (g)'],min:100,max:200,step:10,v:150,u:' g'},{k:'th1',l:['Initial temp θ₁ (°C)','ආරම්භක උෂ්ණත්වය θ₁ (°C)'],min:18,max:30,step:1,v:25,u:' °C'}],lock:true,
+btn:[{l:()=>0,f(){}}],
+init:()=>({step:0,m1:+(55+Math.random()*10).toFixed(1),heat:0,ms:0,T:25,a:0}),cam:[-1.2,2.7,17,.15,.3],
+build(r){const s=this.s;gnd(0);const bl=M(0x2563eb,{metalness:.5});mesh(new THREE.CylinderGeometry(.55,.65,.15,24),bl,[-4,.08,0]);mesh(new THREE.CylinderGeometry(.12,.12,.9,12),M(0x9ca3af,{metalness:.9}),[-4,.55,0]);
+s.fl=mesh(ug(new THREE.ConeGeometry(.24,.8,16)),M(0xff9a1f,{emissive:0xff6a00,emissiveIntensity:.9,transparent:true,opacity:.85}),[-4,.95,0]);s.fl.visible=false;
+for(let i=0;i<3;i++){const a=i*2.094,l=mesh(new THREE.CylinderGeometry(.04,.04,1.8,6),M(0x94a3b8,{metalness:.9}),[-4+Math.cos(a)*.95,.85,Math.sin(a)*.95]);l.rotation.set(Math.sin(a)*.0,0,0)}
+mesh(new THREE.TorusGeometry(1,.04,8,24),M(0x94a3b8,{metalness:.9}),[-4,1.7,0]).rotation.x=Math.PI/2;
+const pr=[];for(let y=0;y<=2.7;y+=.1)pr.push(new THREE.Vector2(y<2.1?1.3-y*.452:.35,y));mesh(new THREE.LatheGeometry(pr,32),GL,[-4,1.8,0]);
+mesh(new THREE.CylinderGeometry(.94,1.28,.8,28),M(0x4aa8ff,{transparent:true,opacity:.55}),[-4,2.2,0]);mesh(new THREE.CylinderGeometry(.42,.34,.3,16),M(0xe08a2e),[-4,4.45,0]);
+const gp=[[-3.85,4.5],[-3.85,5.6],[1.7,5.6],[1.7,3.95]],pipe=(a,b)=>{const A=V3(a[0],a[1],0),B=V3(b[0],b[1],0),d=B.clone().sub(A),m=mesh(new THREE.CylinderGeometry(.07,.07,d.length(),10),GL,[0,0,0]);m.position.copy(A).add(B).multiplyScalar(.5);m.quaternion.setFromUnitVectors(V3(0,1,0),d.normalize())};
+for(let i=0;i<3;i++)pipe(gp[i],gp[i+1]);pipe([1.2,3.4],[1.2,.5]);
+mesh(new THREE.CylinderGeometry(.55,.55,1.3,24,1,true),GL,[1.5,3.3,0]);[3.95,2.65].forEach(y=>mesh(new THREE.CylinderGeometry(.5,.58,.22,20),M(0xe08a2e),[1.5,y,0]));
+mesh(new THREE.CylinderGeometry(1.45,1.45,2.1,36,1,true),M(0xb4780f,{side:2,roughness:.9}),[1.5,1.05,0]);mesh(new THREE.CylinderGeometry(1.45,1.45,.1,36),M(0xb4780f),[1.5,-.02,0]);
+const c=calo(r,1.5);s.c=c;mesh(new THREE.CylinderGeometry(1.05,1.05,.1,36),M(0x7f1d1d),[1.5,1.9,0]);s.th=thermo(c.g,[.45,.15,0]);s.sr=mesh(new THREE.CylinderGeometry(.03,.03,2.3,8),M(0x94a3b8,{metalness:.8}),[.35,1.2,.3],c.g);
+s.pp=[[-3.85,4.5],[-3.85,5.6],[1.7,5.6],[1.7,3.95],[1.2,3.4],[1.2,.5]];s.ln=s.pp.map((p,i)=>i?Math.hypot(p[0]-s.pp[i-1][0],p[1]-s.pp[i-1][1]):0);s.tl=s.ln.reduce((a,b)=>a+b);
+const mk=(n,c,z)=>{const g=new THREE.BufferGeometry().setAttribute('position',new THREE.BufferAttribute(new Float32Array(n*3),3));const p=new THREE.Points(g,new THREE.PointsMaterial({color:c,size:z,transparent:true,opacity:.8}));p.frustumCulled=false;r.add(p);return p};
+s.sp=mk(50,0xffffff,.16);s.bb=mk(30,0xffffff,.07);s.cb=mk(24,0xffffff,.07);s.u=Array.from({length:50},()=>Math.random());s.o2=s.u.map(()=>[(Math.random()-.5)*.1,(Math.random()-.5)*.1]);s.bu=Array.from({length:30},()=>Math.random());s.cu=Array.from({length:24},()=>Math.random());
+tag(['Boiler','බොයිලරය'],[-4,.1+4.9,0],0,.7);tag(['Steam trap','වාෂ්ප උගුල'],[1.5,4.55,0],0,.7);tag(['Lagging','ආවරණය'],[3.7,1,0],0,.7);tag(['Calorimeter + water','කැලරිමීටරය + ජලය'],[1.5,-.5,0],0,.8)},
+tick(dt,t){const s=this.s,st=s.step;if(st>=2&&st<4)s.heat=Math.min(1,s.heat+dt/6);if(st>=4)s.heat=Math.max(0,s.heat-dt/10);const boil=s.heat>=1,flow=st==3;
+if(flow)s.ms=Math.min(9,s.ms+dt*.45);const C=s.mw*4.2+s.m1*.39,id=(C*s.th1+s.ms*2680)/(C+s.ms*4.2);s.T=s.th1+(id-s.th1)*.97;
+s.fl.visible=st==2||st==3;s.fl.scale.set(1,.85+Math.sin(t*20)*.15,1);s.c.w.scale.y=Math.max(.001,(st>=1?s.mw/150*.85+s.ms*.02:0));setT(s.th,st>=1?s.T:s.th1);
+const rnd=(p,i,x,y,z)=>p.geometry.attributes.position.setXYZ(i,x,y,z);
+const A=s.sp.geometry.attributes.position,um=st>=3?1:.72;s.sp.visible=boil&&st<4;for(let i=0;i<50;i++){s.u[i]+=dt*.22;if(s.u[i]>um)s.u[i]=0;let d=s.u[i]*s.tl,k=1;while(k<5&&d>s.ln[k])d-=s.ln[k++];const p=s.pp[k-1],q=s.pp[k],e=d/s.ln[k];A.setXYZ(i,p[0]+(q[0]-p[0])*e+s.o2[i][0],p[1]+(q[1]-p[1])*e+s.o2[i][1],s.o2[i][0])}A.needsUpdate=true;
+const B=s.bb.geometry.attributes.position;s.bb.visible=s.heat>.4;for(let i=0;i<30;i++){s.bu[i]=(s.bu[i]+dt*(.4+s.heat))%1;B.setXYZ(i,-4+Math.sin(i*5.1)*.6*(1-s.bu[i]*.2),1.9+s.bu[i]*.75,Math.cos(i*3.3)*.5)}B.needsUpdate=true;
+const D=s.cb.geometry.attributes.position;s.cb.visible=flow;for(let i=0;i<24;i++){s.cu[i]=(s.cu[i]+dt*.8)%1;D.setXYZ(i,1.2+Math.sin(i*7)*.3*s.cu[i],.5+s.cu[i]*(s.mw/150*.85),Math.cos(i*4)*.3*s.cu[i])}D.needsUpdate=true;
+if(flow)s.a+=dt*5;s.sr.position.set(.35+(flow?Math.cos(s.a)*.12:0),1.2,.3+(flow?Math.sin(s.a)*.12:0))},
+out(){const s=this.s,st=s.step,m2=s.m1+s.mw,r=[];if(st>=1)r.push([['Calorimeter m₁','කැලරිමීටරය m₁'],f(s.m1)+' g'],[['With water m₂','ජලය සමඟ m₂'],f(m2)+' g'],[['Initial temp θ₁','ආරම්භක උෂ්ණත්වය θ₁'],f(s.th1)+' °C']);
+if(st==2)r.push([['Boiler','බොයිලරය'],s.heat<1?T(['heating…','රත් වෙමින්…']):T(['boiling – steam steady','නටයි – වාෂ්ප ස්ථිරයි'])]);if(st==3)r.push([['Temperature now','දැන් උෂ්ණත්වය'],f(s.T)+' °C']);
+if(st>=4){const t2=s.th2,ms=+f(s.ms,1),C=s.mw*4.2+s.m1*.39,Lv=(C*(t2-s.th1)-ms*4.2*(100-t2))/ms;r.push([['Final temp θ₂','අවසාන උෂ්ණත්වය θ₂'],f(t2)+' °C'],[['With steam m₃','වාෂ්ප සමඟ m₃'],f(m2+ms)+' g'],[['Steam m_s = m₃ − m₂','වාෂ්ප m_s'],f(ms)+' g']);
+return rw(r)+`<p>L_v = <b>${f(Lv,0)} J/g</b> (${f(Lv/1000,2)} ×10⁶ J/kg)</p><p class=${Math.abs(Lv-2260)<160?'ok':'bd'}>${T(['Accepted value 2260 J/g; error','පිළිගත් අගය 2260 J/g; දෝෂය'])} ${f(Math.abs(Lv-2260)/22.6,1)}%</p><div class=fm>c_w = 4.2 J/g·K, c_c = 0.39 J/g·K</div>`}return rw(r)}}
+];
+// stepper buttons for practicals 4 & 5
+const L4=[['1. Weigh empty calorimeter (m₁)','2. Add warm water, weigh (m₂)','3. Insert thermometer, read θ₁','4. Add dry ice & stir','5. Read θ₂ & weigh (m₃)','Restart'],['1. හිස් කැලරිමීටරය කිරන්න (m₁)','2. උණුසුම් ජලය දමා කිරන්න (m₂)','3. උෂ්ණත්වමානය දමා θ₁ කියවන්න','4. වියළි අයිස් දමා කලවම් කරන්න','5. θ₂ කියවා කිරන්න (m₃)','නැවත ආරම්භ කරන්න']];
+const L5=[['1. Weigh calorimeter, read θ₁','2. Light the burner','3. Pass dry steam into water','4. Stop steam, read θ₂ & weigh (m₃)','Restart'],['1. කැලරිමීටරය කිරා θ₁ කියවන්න','2. දහන්නාව දල්වන්න','3. වියළි වාෂ්ප ජලයට යවන්න','4. වාෂ්ප නවත්වා θ₂ කියවා කිරන්න (m₃)','නැවත ආරම්භ කරන්න']];
+P[3].btn=[{l:()=>[L4[0][cur.s.step],L4[1][cur.s.step]],f(){const s=cur.s;if(s.step==5)return load(ci);s.step++;if(s.step==4){const C=s.mw*4.2+s.m1*.39;let t=(C*s.th1-s.mi*334)/(C+s.mi*4.2)+.2*(Math.random()-.5);if(t<.5){t=0;s.warn=1}s.th2=t}}}];
+P[4].btn=[{l:()=>[L5[0][cur.s.step],L5[1][cur.s.step]],dis:()=>cur.s.step==2&&cur.s.heat<1,f(){const s=cur.s;if(s.step==4)return load(ci);s.step++;if(s.step==4)s.th2=+f(s.T+(Math.random()-.5)*.2)}}];
+// ---------- UI
+function panel(){const p=cur;$('#ttl').textContent=T(p.n);$('#th').innerHTML=`<p>${T(p.th)}</p>`;$('#st').innerHTML=T(p.st).map(x=>`<li>${x}</li>`).join('');
+$('#ct').innerHTML=p.ctl.map(c=>`<label>${T(c.l)}<b id="v_${c.k}">${p.s[c.k]}${c.u}</b></label><input type=range id="r_${c.k}" min=${c.min} max=${c.max} step=${c.step} value=${p.s[c.k]}>`).join('')+`<div class=bt>${p.btn.map((b,i)=>`<button data-i=${i}></button>`).join('')}</div>`;
+p.ctl.forEach(c=>$('#r_'+c.k).oninput=e=>{p.s[c.k]=+e.target.value;$('#v_'+c.k).textContent=e.target.value+c.u});
+document.querySelectorAll('#ct button').forEach(b=>b.onclick=()=>p.btn[+b.dataset.i].f());refresh();tabs()}
+function refresh(){if(!cur)return;$('#out').innerHTML=cur.out();document.querySelectorAll('#ct button').forEach(b=>{const q=cur.btn[+b.dataset.i];b.textContent=T(q.l());b.disabled=!!(q.dis&&q.dis())});if(cur.lock)cur.ctl.forEach(c=>$('#r_'+c.k).disabled=cur.s.step>0)}
+function load(i){ci=i;if(root)sc.remove(root);root=new THREE.Group();sc.add(root);tags=[];cur=P[i];cur.s=cur.init();cur.ctl.forEach(c=>cur.s[c.k]=c.v);cur.build(root);const c=cur.cam;az=c[0];el=c[1]/10>1?.3:.25;if(i==2)el=.12;dist=c[2];tg.set(c[3],c[4],0);if(i==0)el=.05;if(i==1)el=.12;if(i==3)el=.3;if(i==4)el=.2;
+document.querySelectorAll('nav button').forEach((b,j)=>b.classList.toggle('on',j==i));panel()}
+function lang_(){document.documentElement.lang=lang=='en'?'en':'si';$('#lg').textContent=lang=='en'?'සිංහල':'English';['s2','s4'].forEach(k=>$('#'+k).textContent=T(UI[k]));$('#hint').textContent=T(UI.hint);
+$('#nv').innerHTML=(sec?[]:P.map((p,i)=>`<button>${IC[i]} ${T(p.n)}</button>`)).join('');document.querySelectorAll('nav button').forEach((b,j)=>{b.onclick=()=>load(j);b.classList.toggle('on',j==ci)});tags.forEach(drawTag);sx();tabs();if(cur)panel()}
+$('#lg').onclick=()=>{lang=lang=='en'?'si':'en';lang_()};
+const IC=['⚖️','📏','💧','🧊','♨️'];let sec=0,tab=0,qa={};const tx=a=>Array.isArray(a)?T(a):a;
+function setTh(m){document.documentElement.dataset.theme=m;try{localStorage.setItem('sl',m)}catch(e){}$('#tm').textContent=m=='dark'?'☀️':'🌙'}
+{let m;try{m=localStorage.getItem('sl')}catch(e){}setTh(m||(matchMedia('(prefers-color-scheme:light)').matches?'light':'dark'))}
+$('#tm').onclick=()=>setTh(document.documentElement.dataset.theme=='dark'?'light':'dark');
+function sx(){$('#sx').innerHTML=`<button class="${sec?'':'on'}">⚛️ ${T(['Physics','භෞතික විද්‍යාව'])}</button><button class="${sec?'on':''}">🧪 ${T(['Chemistry','රසායන විද්‍යාව'])}<span class=soon>${T(['Soon','ඉක්මනින්'])}</span></button>`;[...$('#sx').children].forEach((b,i)=>b.onclick=()=>{sec=i;lang_()});$('#cv').hidden=$('#pn').hidden=!!sec;$('#cs').hidden=!sec;
+$('#cs').innerHTML=`<div><div style="font-size:64px">🧪</div><h1>${T(['Chemistry practicals are coming soon','රසායන විද්‍යා ප්‍රායෝගික ඉක්මනින් පැමිණේ'])}</h1><p>${T(['Titration, salt analysis and rates of reaction are being prepared.','අනුමාපනය, ලවණ විශ්ලේෂණය හා ප්‍රතික්‍රියා සීඝ්‍රතාව සූදානම් කරමින් පවතී.'])}</p><button id=bk>⚛️ ${T(['Back to Physics','භෞතික විද්‍යාවට ආපසු'])}</button></div>`;$('#bk').onclick=()=>{sec=0;lang_()}}
+function tabs(){const n=[['🔬','Practical','ප්‍රායෝගිකය'],['📖','Theory','න්‍යාය'],['🎯','Quiz','ප්‍රශ්නාවලිය']];$('#tb').innerHTML=n.map((x,i)=>`<button class="${i==tab?'on':''}">${x[0]} ${T([x[1],x[2]])}</button>`).join('');[...$('#tb').children].forEach((b,i)=>b.onclick=()=>{tab=i;tabs()});[0,1,2].forEach(i=>$('#v'+i).hidden=i!=tab);quiz()}
+const Q=(q,o,a,e)=>({q,o,a,e});
+const QZ=[[Q(['In the parallelogram law, the resultant of P and Q is the…','සමාන්තරාස්‍ර නියමයේ P හා Q හි සම්ප්‍රයුක්තය වන්නේ…'],[['shorter side','කෙටි බාහුව'],['diagonal through the common point','ඒකාග්‍ර ලක්ෂ්‍යය හරහා විකර්ණය'],['sum of the two angles','කෝණ දෙකේ එකතුව']],1,['The diagonal gives R in size and direction.','විකර්ණය R හි විශාලත්වය හා දිශාව දෙයි.']),
+Q(['With the knot at rest, the resultant of P and Q is…','ගැටය නිශ්චල විට P හා Q හි සම්ප්‍රයුක්තය…'],[['zero','ශුන්‍යයි'],['equal to S, same direction','S ට සමාන, එකම දිශාවට'],['equal and opposite to S','S ට සමාන හා ප්‍රතිවිරුද්ධයි']],2,['It balances the third force S.','එය තුන්වන බලය S සමතුලිත කරයි.']),
+Q(['If P = Q = 100 g, which S can keep equilibrium?','P = Q = 100 g නම්, සමතුලිතතාවට S විය හැක්කේ?'],[['300 g','300 g'],['150 g','150 g'],['250 g','250 g']],1,['S must be less than P + Q (triangle rule).','S < P + Q විය යුතුයි (ත්‍රිකෝණ නියමය).'])],
+[Q(['Moments: clockwise sum equals…','ඝූර්ණ: දක්ෂිණාවර්ත sum, ... ට සමානයි'],[['anticlockwise sum','වාමාවර්ත sum'],['W₁ + W₂','W₁ + W₂'],['zero always','සැමවිටම ශුන්‍ය']],0,['At equilibrium the moments balance.','සමතුලිතතාවේදී ඝූර්ණ සමානයි.']),
+Q(['W₁ = 100 g at 20 cm balances W₂ at 25 cm. W₂ = ?','W₁ = 100 g (20 cm) ට W₂ (25 cm) සමතුලිතයි. W₂ = ?'],['125 g','100 g','80 g'],2,['W₂ = 100 × 20 / 25 = 80 g.','W₂ = 100 × 20 / 25 = 80 g.']),
+Q(['Why find the rule’s balance point first?','රූලේ තුලන ලක්ෂ්‍යය මුලින් සොයන්නේ ඇයි?'],[['to cut friction','ඝර්ෂණය අඩු කිරීමට'],['so its own weight gives no net moment','එහි බරින් ඝූර්ණයක් නොවීමට'],['to measure W₂ directly','W₂ කෙලින් මැනීමට']],1,['The centre of gravity sits over the pivot.','ගුරුත්ව කේන්ද්‍රය අක්ෂය මත පිහිටයි.'])],
+[Q(['In the narrow part of a Venturi tube the speed is…','වෙන්චුරි නළයේ පටු කොටසේ වේගය…'],[['lower','අඩුයි'],['the same','එලෙසමයි'],['higher','වැඩියි']],2,['A₁v₁ = A₂v₂: smaller area, larger speed.','A₁v₁ = A₂v₂: වර්ගඵලය අඩු නම් වේගය වැඩියි.']),
+Q(['The piezometer level at the narrow part is…','පටු කොටසේ පීසෝමීටර මට්ටම…'],[['lower (pressure is lower)','පහළයි (පීඩනය අඩුයි)'],['higher','ඉහළයි'],['unchanged','නොවෙනස්']],0,['Higher speed means lower pressure.','වේගය වැඩි නම් පීඩනය අඩුයි.']),
+Q(['The continuity equation is…','අඛණ්ඩතා සමීකරණය…'],['A₁ + v₁ = A₂ + v₂','A₁v₁ = A₂v₂','A₁/v₁ = A₂/v₂'],1,['Volume flow rate Q = Av is constant.','පරිමා ගලන ශීඝ්‍රතාව Q = Av නියතයි.'])],
+[Q(['Why must the ice cubes be dried first?','අයිස් කැට මුලින් වියළන්නේ ඇයි?'],[['to melt faster','වේගයෙන් දියවීමට'],['surface water adds extra mass and causes error','මතුපිට ජලය අමතර ස්කන්ධයක් එක් කර දෝෂයක් වේ'],['to cool the room','කාමරය සිසිල් කිරීමට']],1,['Only ice should absorb latent heat.','ගුප්ත තාපය උරා ගත යුත්තේ අයිස් පමණි.']),
+Q(['Accepted L_f of ice is…','අයිස්වල පිළිගත් L_f…'],['334 J/g','2260 J/g','4.2 J/g'],0,['3.34 × 10⁵ J/kg.','3.34 × 10⁵ J/kg.']),
+Q(['Why start with water slightly above room temperature?','කාමර උෂ්ණත්වයට වඩා තරමක් රත් ජලය භාවිතා කරන්නේ ඇයි?'],[['final temperature ends near room temperature, so less heat exchange','අවසාන උෂ්ණත්වය කාමර උෂ්ණත්වය ආසන්න නිසා තාප හුවමාරුව අඩුයි'],['to melt more ice','වැඩි අයිස් දියකිරීමට'],['to read the thermometer','උෂ්ණත්වමානය කියවීමට']],0,['This cancels heat gained and lost to surroundings.','එය පරිසරය සමඟ තාප හුවමාරුව අඩු කරයි.'])],
+[Q(['The steam trap is used to…','වාෂ්ප උගුල භාවිතා කරන්නේ…'],[['raise steam pressure','වාෂ්ප පීඩනය වැඩි කිරීමට'],['cool the steam','වාෂ්ප සිසිල් කිරීමට'],['remove condensed water so only dry steam enters','ඝනීභවනය වූ ජලය ඉවත් කර වියළි වාෂ්ප පමණක් යැවීමට']],2,['Water droplets would add error to m_s.','ජල බිංදු m_s හි දෝෂයක් ඇති කරයි.']),
+Q(['Lagging and a lid are used to…','ආවරණය හා පියන භාවිතා කරන්නේ…'],[['reduce heat loss','තාප හානිය අඩු කිරීමට'],['speed up boiling','නටවීම වේගවත් කිරීමට'],['weigh the steam','වාෂ්ප කිරීමට']],0,['Less heat escapes to the surroundings.','පරිසරයට යන තාපය අඩුයි.']),
+Q(['Why is L_v much larger than L_f?','L_v, L_f ට වඩා ඉතා විශාල ඇයි?'],[['molecules must be fully separated, needing far more energy','අණු සම්පූර්ණයෙන් වෙන් කිරීමට වැඩි ශක්තියක් අවශ්‍යයි'],['steam is heavier','වාෂ්ප බරයි'],['water is colder','ජලය සිසිලයි']],0,['Boiling breaks nearly all attractions between molecules.','තාපාංකයේදී අණු අතර ආකර්ෂණ සියල්ලම පාහේ බිඳේ.'])]];
+function quiz(){const el=$('#qz');if(!cur||!el)return;const qs=QZ[ci],a=qa[ci]=qa[ci]||[];const sc=qs.filter((q,i)=>a[i]==q.a).length;
+el.innerHTML=qs.map((q,i)=>`<div class=q><p><b>${i+1}. ${T(q.q)}</b></p>${q.o.map((o,j)=>`<button data-q=${i} data-o=${j} class="o ${a[i]==null?'':j==q.a?'right':j==a[i]?'wrong':''}" ${a[i]!=null?'disabled':''}>${tx(o)}</button>`).join('')}${a[i]!=null?`<p class=fm>${a[i]==q.a?'✔':'✘'} ${T(q.e)}</p>`:''}</div>`).join('')+`<p class=sco>${T(['Score','ලකුණු'])}: <b>${sc}/${qs.length}</b></p><button id=qr>↻ ${T(['Try again','නැවත උත්සාහ කරන්න'])}</button>`;
+el.querySelectorAll('.o').forEach(b=>b.onclick=()=>{a[+b.dataset.q]=+b.dataset.o;quiz()});$('#qr').onclick=()=>{qa[ci]=[];quiz()}}
+let last=0;function loop(ms){const dt=Math.min(.05,(ms-last)/1000||.016);last=ms;if(cur)cur.tick(dt,ms/1000);setCam();R.render(sc,cam);requestAnimationFrame(loop)}
+lang_();load(0);setInterval(refresh,250);document.fonts&&document.fonts.ready.then(()=>tags.forEach(drawTag));requestAnimationFrame(loop);
+</script></body></html>
