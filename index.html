@@ -447,7 +447,7 @@ pipe([-4.6,0,-2.7],[-4.6,5.2,-2.7],.07,STd);cy(.6,.6,.1,STd,[-4.6,.05,-2.7]);pip
 s.vC=VS(root,1,0,()=>1.15,2.4,0xb0795a);
 const G=s.G=new THREE.Group();G.position.set(6,3.9,0);root.add(G);
 s.vS=VS(G,0,-2,y=>y<.7?.09:y<2.3?.09+.91*Math.sin((y-.7)/1.6*PI/2):y<3.7?.25+.75*Math.cos((y-2.3)/1.4*PI/2):.25,4.1,0xdfeee8);
-cy(.12,.12,.5,M(0xf0b429),[0,-1.55,0],G).rotation.z=PI/2;s.hd=mesh(new THREE.BoxGeometry(.5,.07,.07),M(0xef4444),[.32,-1.55,0],G);s.sp=cy(.3,.22,.35,M(0x2563eb),[0,2.22,0],G);
+cy(.12,.12,.5,M(0xf0b429),[0,-1.55,0],G).rotation.z=PI/2;s.hd=mesh(new THREE.BoxGeometry(.5,.07,.07),M(0xef4444),[.32,-1.55,0],G);s.spt=cy(.3,.22,.35,M(0x2563eb),[0,2.22,0],G);
 pipe([4.9,0,0],[4.9,5.4,0],.07,STd);cy(.7,.7,.1,STd,[4.9,.05,0]);pipe([4.9,3.6,0],[5.12,3.6,0],.05,STd);mesh(new THREE.TorusGeometry(.88,.05,8,28),STd,[6,3.6,0]).rotation.x=PI/2;
 s.vK=VS(root,6,0,y=>y<1.5?.85-.6*y/1.5:.25,2.1,0xf59a2a);
 s.nd=Array.from({length:18},(_,i)=>{const g=new THREE.BoxGeometry(.035,.45,.035);g.translate(0,.225,0);const u=((i*37)%100)/100,a=i*2.4,n=mesh(g,M(0xffffff,{emissive:0x666666}),[Math.cos(a)*.4*Math.sqrt(u),.04,Math.sin(a)*.4*Math.sqrt(u)],s.vK.g);n.rotation.set((u-.5)*.9,a,(((i*13)%10)/10-.5)*1.4);n.visible=false;return n});
@@ -480,7 +480,7 @@ for(let i=0;i<130;i++){const u=((i*37)%100)/100,w=((i*53)%100)/100,a=i*2.4,R=.95
 s.hA.material.emissiveIntensity=st==1&&c1<1?.5+.25*Math.sin(t*6):0;const hot=st==8&&e1>.99&&e2<1;s.hE.material.emissiveIntensity=hot?.5+.25*Math.sin(t*6):0;
 const bw=st==3||st==5?G(p,.5,.85):st==7?G(p,.4,.58):0,bf=E(G(bw,0,.3))-E(G(bw,.75,1)),tg_=st==7?[7,7.6]:[2,4.45],al=2.2*bf,rb=s.rb;rb.position.set(lerp(3.1,tg_[0],bf),lerp(0,tg_[1],bf),lerp(2.2,0,bf));rb.rotation.z=al;
 const tx=rb.position.x-1.25*Math.sin(al),ty=rb.position.y+1.25*Math.cos(al),dr_=bf>.95&&(st!=7||(ad>0&&ad<1));for(let i=0;i<8;i++)sp3(s.dp,i,tx,dr_?ty-((i/8+t*1.4)%1)*1.1:off,0);upd(s.dp);
-s.sp.visible=!(st==7&&p>.1&&p<.58);s.G.rotation.z=Math.sin(t*16)*.24*Math.sin(PI*sh);s.hd.rotation.z=d7>0&&d7<1?PI/2:0;
+s.spt.visible=!(st==7&&p>.1&&p<.58);s.G.rotation.z=Math.sin(t*16)*.24*Math.sin(PI*sh);s.hd.rotation.z=d7>0&&d7<1?PI/2:0;
 const kp=s.vK.g.position,vap=hot&&e2>0&&e2<.95;for(let i=0;i<50;i++){const u=(i/50+t*.5)%1;sp3(s.vp,i,kp.x+Math.sin(i*3+t*2)*(.15+.35*u),vap?kp.y+2.2+u*2.2:off,Math.cos(i*2.3)*(.1+.3*u))}upd(s.vp);
 const cg=G(e2,.55,1);s.nd.forEach(n=>{n.scale.y=Math.max(.001,cg);n.visible=cg>.02});
 const T_=[[1.5,24],[-8,12],[-5.5,15],[-1.2,15],[-1.5,15],[-1.2,15],[-1.5,15],[1.2,19],[8.4,14]][st];if(s.ad&&Math.abs(dist-s.ad)>.02)s.zf=(s.zf||1)*dist/s.ad;s.zf=s.zf||1;s.ad=(s.ad||dist)+(T_[1]*s.zf-(s.ad||dist))*(1-Math.exp(-2*dt));dist=s.ad;if(!dr){tg.x+=(T_[0]-tg.x)*(1-Math.exp(-2*dt));tg.y=2.4}s.stg.position.set(tg.x,7.6,0)},
@@ -595,8 +595,198 @@ Q(['The distillate is cloudy because…','ආසවනය බොර වන්න
 [Q(['Why does Soxhlet keep extracting effectively?','සොක්ස්ලට් ඵලදායී ලෙස නිස්සාරණය කරන්නේ ඇයි?'],[['Fresh solvent keeps a high concentration gradient','නැවුම් ද්‍රාවකය සාන්ද්‍රණ අනුක්‍රමණය ඉහළ තබයි'],['The solvent never boils','ද්‍රාවකය කිසිදා නොනටයි'],['The sample is stirred','නියැදිය කලවම් වේ']],0,['Fick’s law: flux ∝ concentration gradient.','ෆික් නියමය: ගලනය ∝ සාන්ද්‍රණ අනුක්‍රමණය.']),
 Q(['The alkaloids finally collect in…','ඇල්කලොයිඩ අවසානයේ එකතු වන්නේ…'],[['the condenser','කොන්ඩෙන්සරයේ'],['the boiling flask','නටන ප්ලාස්කුවේ'],['the thimble','තිම්බලයේ']],1,['They are non-volatile; solvent re-evaporates.','ඒවා වාෂ්පශීලී නැත; ද්‍රාවකය නැවත වාෂ්ප වේ.'])]];
 QZ.push(...CQ);
+// ===== NEW PRACTICALS: Archimedes (physics) · Soap making & Biodiesel (chemistry) =====
+Object.assign(ICK,{am:'🪨',av:'📦',om:'🥥',ov:'🛢️',sp:'⏩'});
+const lipP=(sg,R,H,a)=>{const ph=-sg*a;return[sg*R*Math.cos(ph)-H*Math.sin(ph),sg*R*Math.sin(ph)+H*Math.cos(ph)]};
+function pourMove(g,home,tgt,p,sg,R,H){const tl=1.9,lo=lipP(sg,R,H,tl),mv=teE(teG(p,0,.22))-teE(teG(p,.86,1)),a=tl*(teE(teG(p,.22,.42))-teE(teG(p,.74,.84))),l=lipP(sg,R,H,a);
+g.position.set(lerp(home[0],tgt[0]-lo[0],mv),lerp(home[1],tgt[1]-lo[1],mv),0);g.rotation.z=-sg*a;
+return{pour:teG(p,.42,.5)*(1-teG(p,.7,.78)),lip:[g.position.x+l[0],g.position.y+l[1]],emp:teG(p,.45,.78)}}
+function strm(pt,n,pour,lip,yEnd,t){pt.visible=pour>.05&&lip[1]>yEnd+.05;if(!pt.visible)return;for(let i=0;i<n;i++){const u=((i/n)+t*1.6)%1;sp3(pt,i,lip[0]+Math.sin(i*5)*.02,lip[1]-(lip[1]-yEnd)*u,Math.sin(i*3)*.02)}upd(pt)}
+function mkVes(par,pf,H,col){const g=new THREE.Group();par.add(g);const pts=[];for(let i=0;i<=28;i++){const y=H*i/28;pts.push(new THREE.Vector2(pf(y),y))}
+mesh(new THREE.LatheGeometry(pts,40),GL,[0,0,0],g);const o={g,pf,H,m:[]};for(let k=0;k<2;k++){const m=mesh(new THREE.BufferGeometry(),M(col,{transparent:true,opacity:.88,roughness:.15,side:2,depthWrite:false}),[0,0,0],g);m.visible=false;o.m.push(m)}return o}
+function fillV(v,k,y0,y1){const m=v.m[k];if(y1-y0<.03){m.visible=false;return}m.visible=true;const key=y0.toFixed(2)+'|'+y1.toFixed(2);if(m.key==key)return;m.key=key;const p=[new THREE.Vector2(0,y0)];for(let i=0;i<=10;i++){const y=y0+(y1-y0)*i/10;p.push(new THREE.Vector2(v.pf(y)*.94,y))}p.push(new THREE.Vector2(0,y1));m.geometry.dispose();m.geometry=new THREE.LatheGeometry(p,32)}
+function mkPourer(x,col,lab,lv){const g=new THREE.Group();g.position.set(x,0,0);root.add(g);cy(.8,.72,1.8,GL,[0,.9,0],g,1);cy(.72,.72,.05,M(0xcbd5e1,{transparent:true,opacity:.7}),[0,.03,0],g);
+const l=mesh(ug(new THREE.CylinderGeometry(.68,.68,1,28)),M(col,{transparent:true,opacity:.85}),[0,.05,0],g);l.scale.y=lv;tag(lab,[0,2.3,0],g,.65);return{g,l,lv}}
+function mkHeat(s){const r=root,st=STL();
+mesh(new THREE.BoxGeometry(17,.3,5),M(0x64748b),[1,-.15,0]);mesh(new THREE.BoxGeometry(3.6,.5,2.8),M(0xe5e7eb,{metalness:.3}),[0,.25,0]);
+s.hp=mesh(new THREE.CylinderGeometry(1.7,1.7,.05,32),M(0x1f2937,{emissive:0xff3a10,emissiveIntensity:0}),[0,.525,0]);
+for(const k of[-.8,.8])cy(.14,.14,.12,M(0x111827),[k,.25,1.43]).rotation.x=Math.PI/2;
+cy(1.6,1.6,2.0,GL,[0,1.55,0],0,1);cy(1.6,1.6,.04,M(0xcbd5e1,{transparent:true,opacity:.6}),[0,.57,0]);
+s.bwm=mesh(ug(new THREE.CylinderGeometry(1.56,1.56,1,36)),M(0x7dd3fc,{transparent:true,opacity:.3,depthWrite:false}),[0,.58,0]);s.bwm.scale.y=1.55;
+s.th=thermo(r,[1.2,.62,0]);
+const fk=s.fk=new THREE.Group();fk.position.set(0,.62,0);r.add(fk);s.fv=mkVes(fk,y=>y<2.2?1-.7*y/2.2:.3,3.4,0xf5c242);
+s.sr=cy(.05,.05,3.8,M(0xd1d5db,{transparent:true,opacity:.75}),[0,2.5,0]);s.sr.visible=false;s.bb=PT(30,0xffffff,.07);
+tag(['Water bath','ජල ස්නානය'],[2.9,1.4,0],0,.7);tag(['Hot plate','රත් තහඩුව'],[0,-.55,1.3],0,.7);tag(['Thermometer','උෂ්ණත්වමානය'],[1.2,3.55,0],0,.7);tag(['Conical flask','කේතු ප්ලාස්කුව'],[-1.9,2.3,0],0,.65)}
+function heatTick(s,dt,t,Tt,on,stir,bbT){s.T+=(Tt-s.T)*(1-Math.exp(-.35*dt));setT(s.th,s.T);s.hp.material.emissiveIntensity=on?.5+.25*Math.sin(t*6):0;
+s.bb.visible=on&&s.T>bbT;for(let i=0;i<30;i++){s.bu[i]=(s.bu[i]+dt*.5)%1;sp3(s.bb,i,Math.sin(i*5.1)*1.2,.62+s.bu[i]*1.4,Math.cos(i*3.3)*.9)}upd(s.bb);
+s.sr.visible=stir;if(stir){s.sa+=dt*6;s.sr.position.x=Math.cos(s.sa)*.12;s.sr.position.z=Math.sin(s.sa)*.12}}
+function pelTick(s,on,x,t){s.pe.visible=on;s.tpl.visible=on;if(!on)return;for(let i=0;i<24;i++){const u=((i/24)+t*.9)%1;sp3(s.pe,i,x+Math.sin(i*5)*.28,3.4-1.7*u,Math.cos(i*3)*.2)}upd(s.pe)}
+
+// ---------- Physics: Archimedes' principle ----------
+const ARL=[['1. Hang the object, read W_A','2. Weigh the empty beaker (M_C)','3. Place beaker under spout & lower the object','4. Read the submerged weight (W_W)','5. Weigh the displaced water (M_CW)','Restart'],['1. වස්තුව එල්ලා W_A කියවන්න','2. හිස් බීකරය කිරන්න (M_C)','3. බීකරය නාලය යටින් තබා වස්තුව බස්සවන්න','4. ගිලුණු බර කියවන්න (W_W)','5. විස්ථාපිත ජලය කිරන්න (M_CW)','නැවත ආරම්භ කරන්න']];
+const ARH=[['Press the button to begin. The balance reads 0.00 N (no zero error).','Hang the solid on the hook; the spring stretches and the balance reads its weight in air.','Weigh the empty catch-beaker and record M_C.','Lower the object slowly; the overflow water runs through the spout into the beaker.','The spring balance now reads a smaller weight W_W: the object feels lighter in water.','Weigh the beaker with the displaced water and compare.'],['ආරම්භ කිරීමට බොත්තම ඔබන්න. තුලාව 0.00 N පෙන්වයි (ශූන්‍ය දෝෂයක් නැත).','ඝන වස්තුව කොකුවේ එල්ලන්න; දුන්න දිගු වී වාතයේ බර කියවයි.','හිස් ග්‍රාහක බීකරය කිරා M_C සටහන් කරන්න.','වස්තුව සෙමින් බස්සවන්න; පිටාර ජලය නාලය හරහා බීකරයට ගලයි.','දුනු තුලාව දැන් අඩු බරක් (W_W) පෙන්වයි: වස්තුව ජලයේදී සැහැල්ලු වේ.','විස්ථාපිත ජලය සහිත බීකරය කිරා සසඳන්න.']];
+const AR={n:['Archimedes’ Principle','ආකිමිඩීස් මූලධර්මය'],
+th:['Archimedes’ principle: when a body is wholly or partly immersed in a fluid it feels an upward buoyant force equal to the weight of the fluid it displaces. So the apparent loss of weight W_A − W_W equals the weight of the displaced water.<div class=fm>Apparatus: solid object (metal bob or stone), spring balance, overflow (Eureka) can filled to the brim with water, small catch-beaker, digital weighing scale.</div>','ආකිමිඩීස් මූලධර්මය: ද්‍රවයක සම්පූර්ණයෙන් හෝ අර්ධ වශයෙන් ගිලී ඇති වස්තුවකට, එය විස්ථාපනය කරන ද්‍රවයේ බරට සමාන උඩුකුරු තෙරපුමක් ක්‍රියා කරයි. එබැවින් දැකිය හැකි බර අඩුවීම W_A − W_W යනු විස්ථාපිත ජලයේ බරට සමානයි.<div class=fm>උපකරණ: ඝන වස්තුවක් (ලෝහ ගුලියක් හෝ ගලක්), දුනු තුලාව, දාරය දක්වා ජලය පිරවූ පිටාර බඳුන (යුරේකා බඳුන), කුඩා ග්‍රාහක බීකරයක්, ඩිජිටල් තුලාවක්.</div>'],
+st:[['Suspend the object from the spring balance and note its weight in air (W_A).','Weigh the empty catch-beaker on the digital scale and record its mass (M_C).','Place the beaker under the spout of the overflow can (filled to the brim) and slowly lower the object until it is fully submerged, without touching the bottom or sides.','Read the new, lower weight on the spring balance (W_W).','When the dripping stops, weigh the beaker with the displaced water (M_CW).','Compare the apparent loss of weight (W_A − W_W) with the weight of the displaced water, (M_CW − M_C)g.'],['වස්තුව දුනු තුලාවෙන් එල්ලා වාතයේ එහි බර (W_A) සටහන් කරන්න.','හිස් ග්‍රාහක බීකරය ඩිජිටල් තුලාවේ කිරා එහි ස්කන්ධය (M_C) සටහන් කරන්න.','බීකරය (දාරය දක්වා පිරවූ) පිටාර බඳුනේ නාලය යටින් තබා, වස්තුව පතුලට හෝ පැතිවලට නොගැටී සම්පූර්ණයෙන් ගිලෙන තෙක් සෙමින් බස්සවන්න.','දුනු තුලාවේ දැන් පෙන්වන අඩු බර (W_W) කියවන්න.','ජලය බේරීම නතර වූ පසු, විස්ථාපිත ජලය සහිත බීකරය කිරන්න (M_CW).','දැකිය හැකි බර අඩුවීම (W_A − W_W) විස්ථාපිත ජලයේ බර (M_CW − M_C)g සමඟ සසඳන්න.']],
+ctl:[{k:'am',l:['Object mass (g)','වස්තුවේ ස්කන්ධය (g)'],min:30,max:100,step:5,v:55,u:' g'},{k:'av',l:['Object volume (cm³)','වස්තුවේ පරිමාව (cm³)'],min:5,max:25,step:5,v:10,u:' cm³'}],lock:true,
+btn:[{l:()=>[ARL[0][cur.s.step],ARL[1][cur.s.step]],dis:()=>cur.s.step==3&&!(cur.s.an>=1&&cur.s.fl<.05),f(){const s=cur.s;if(s.step==5)return load(ci);s.step++}}],
+init:()=>({step:0,att:0,an:0,f:0,fl:0,bx:7,by:0,W:0,mc:+(90+Math.random()*20).toFixed(1),nz:+((Math.random()-.5)*.4).toFixed(1)}),cam:[0,0,16,1.8,4.6],
+build(r){const s=this.s,PI=Math.PI,st=STL();
+mesh(new THREE.BoxGeometry(13,.3,5),M(0x64748b),[1.8,-.15,0]);mesh(new THREE.BoxGeometry(2,.2,1.6),M(0x475569,{metalness:.6}),[-3.2,.1,0]);cy(.07,.07,10.2,st,[-3.2,5.1,0]);
+const g=s.gp=new THREE.Group();r.add(g);
+mesh(new THREE.BoxGeometry(.35,.3,.35),M(0x111827),[-3.2,9.4,0],g);cy(.06,.06,3.3,st,[-1.55,9.4,0],g).rotation.z=PI/2;cy(.03,.03,.25,st,[0,9.3,0],g);
+cy(.3,.3,2.2,GL,[0,8.1,0],g,1);cy(.33,.33,.1,M(0x1f2937),[0,9.25,0],g);cy(.33,.33,.1,M(0x1f2937),[0,6.98,0],g);
+const c2=document.createElement('canvas');c2.width=96;c2.height=512;const q=c2.getContext('2d');q.fillStyle='#f1f5f9';q.fillRect(0,0,96,512);q.fillStyle='#111';q.font='bold 22px sans-serif';q.textAlign='left';
+for(let i=0;i<=10;i++){const y=46.5+41.9*i;q.fillRect(i%2?60:44,y-1,i%2?24:40,2);if(i%2==0)q.fillText(i==0?'0':(i/10).toFixed(1),4,y+7)}q.font='bold 18px sans-serif';q.fillText('N',70,30);
+mesh(new THREE.PlaneGeometry(.55,2.2),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c2)}),[0,8.1,.305],g);
+s.pt_=mesh(new THREE.BoxGeometry(.6,.05,.05),M(0xdc2626,{emissive:0x7f1d1d}),[0,9,.33],g);
+s.ex=mesh(ug(new THREE.CylinderGeometry(.1,.1,1,16)),M(0x38bdf8,{metalness:.3}),[0,6.8,0],g);
+s.hk=mesh(new THREE.TorusGeometry(.09,.025,8,16),M(0x94a3b8,{metalness:.9}),[0,6.8,0],g);
+s.bd2=disp(g,[1.55,8.1,.3],1.3,.3);tag(['Spring balance','දුනු තුලාව'],[-1.55,8.1,.3],g,.7);
+cy(1,1,2.2,GL,[0,1.1,0],0,1);cy(1,1,.06,M(0xcbd5e1,{transparent:true,opacity:.6}),[0,.03,0]);
+const wt=mesh(ug(new THREE.CylinderGeometry(.96,.96,1,40)),M(0x4aa8ff,{transparent:true,opacity:.5,depthWrite:false}),[0,.06,0]);wt.scale.y=1.94;
+pipe([.9,2.04,0],[1.95,1.88,0],.13,GL);
+s.bl=mesh(new THREE.SphereGeometry(.5,32,20),M(0x475569,{metalness:.85,roughness:.3}),[-1.9,.5,0]);
+s.th_=mesh(ug(new THREE.CylinderGeometry(.015,.015,1,6)),M(0x111111),[0,0,0]);s.th_.visible=false;
+s.tbl=tag(['Solid','ඝන වස්තුව'],[0,.95,.3],s.bl,.6);
+const bk=s.bk=new THREE.Group();bk.position.set(7,0,0);r.add(bk);cy(.6,.55,1.6,GL,[0,.8,0],bk,1);cy(.55,.55,.05,M(0xcbd5e1,{transparent:true,opacity:.7}),[0,.03,0],bk);
+s.bw=mesh(ug(new THREE.CylinderGeometry(.54,.54,1,28)),M(0x4aa8ff,{transparent:true,opacity:.7}),[0,.05,0],bk);s.bw.scale.y=.001;tag(['Catch beaker','ග්‍රාහක බීකරය'],[0,2.1,0],bk,.6);
+mesh(new THREE.BoxGeometry(2.2,.4,1.8),M(0x1f2937),[5.3,.2,0]);mesh(new THREE.BoxGeometry(1.7,.06,1.4),M(0xe5e7eb,{metalness:.7}),[5.3,.43,0]);s.sd_=disp(r,[5.3,.2,.91],1.5,.28);
+s.sm=PT(40,0x7dd3fc,.1);
+tag(['Overflow can','පිටාර බඳුන'],[0,-.6,1.3],0,.7);tag(['Spout','නාලය'],[2.2,2.55,0],0,.5);tag(['Digital scale','ඩිජිටල් තුලාව'],[5.3,-.6,1.3],0,.7)},
+tick(dt,t){const s=this.s,PI=Math.PI,V=s.av,WA=s.am*.01,loss=V*.01;
+if(s.step>=1)s.att=Math.min(1,s.att+dt/1.6);
+const lf=teG(s.att,.6,1),bt=s.step<2?7:s.step==2?5.3:s.step<5?2.5:5.3;
+s.bx+=clamp(bt-s.bx,-dt*3,dt*3);const dsc=Math.abs(s.bx-5.3);s.by=.43*clamp((1.1-dsc)/.4,0,1);
+if(s.step>=3&&Math.abs(s.bx-2.5)<.05)s.an=Math.min(1,s.an+dt/5);
+const Wp=WA*lf-loss*s.f,ep=.15+1.8*Wp,D=4.09-1.8*(WA-loss),gy=-teE(s.an)*D;s.gp.position.y=gy;
+const k=teE(s.att),hy=gy+5.39-ep,bxw=lerp(-1.9,0,k),byw=lerp(.5,hy,k)+Math.sin(PI*s.att)*.6;s.bl.position.set(bxw,byw,0);
+const fp=s.f;if(s.att>=.999){const h=clamp(2-(byw-.5),0,1);s.f=h*h*(1.5-h)/.5}
+s.fl+=(((s.f-fp)/Math.max(dt,.001)>.02?1:0)-s.fl)*(1-Math.exp(-5*dt));
+const Wn=WA*lf-loss*s.f,e=.15+1.8*Wn;s.W=Wn;
+s.ex.position.y=7-e;s.ex.scale.y=e;s.hk.position.y=6.9-e;s.pt_.position.y=9-1.8*Wn;
+s.th_.visible=s.att>=.999;if(s.th_.visible){const top=gy+6.79-e,b2=byw+.5;s.th_.position.set(0,b2,0);s.th_.scale.y=Math.max(.001,top-b2)}
+s.bk.position.set(s.bx,s.by,0);const lvl=Math.max(.001,s.f*V*.03);s.bw.scale.y=lvl;
+const stm=s.fl>.05&&Math.abs(s.bx-2.5)<.3;s.sm.visible=stm;if(stm){const yt=s.by+.05+lvl;for(let i=0;i<40;i++){const u=((i/40)+t*1.3)%1;sp3(s.sm,i,1.95+.55*u,1.85-(1.85-yt)*u*u,Math.sin(i*5)*.02)}upd(s.sm)}
+const onS=dsc<.6&&s.by>.3,Mx=s.mc+s.f*V+(s.f>=.999?s.nz:0),ds=onS?f(Mx,1)+' g':'0.0 g';if(s.sd_.last!==ds){s.sd_.last=ds;s.sd_.draw(ds)}
+const db=f(Wn,2)+' N';if(s.bd2.last!==db){s.bd2.last=db;s.bd2.draw(db)}
+s.tbl.visible=s.step==0},
+out(){const s=this.s,st=s.step,V=s.av,WA=s.am*.01,Ww=WA-V*.01,r=[[['Spring balance now','දුනු තුලාව දැන්'],f(s.W,2)+' N']];
+if(st>=1)r.push([['Weight in air W_A','වාතයේ බර W_A'],f(WA,2)+' N']);if(st>=2)r.push([['Empty beaker M_C','හිස් බීකරය M_C'],f(s.mc,1)+' g']);if(st>=4)r.push([['Submerged weight W_W','ගිලුණු බර W_W'],f(Ww,2)+' N']);
+const hint=`<p class=fm>${T([ARH[0][st],ARH[1][st]])}</p>`;if(st<5)return rw(r)+hint;
+const mcw=+(s.mc+V+s.nz).toFixed(1),mw=+(mcw-s.mc).toFixed(1),Wwat=mw/1000*10,lo=WA-Ww;
+r.push([['Beaker + water M_CW','බීකරය + ජලය M_CW'],f(mcw,1)+' g'],[['Apparent loss W_A − W_W','දැකිය හැකි බර අඩුවීම W_A − W_W'],f(lo,2)+' N'],[['Displaced water M_CW − M_C','විස්ථාපිත ජලය M_CW − M_C'],f(mw,1)+' g'],[['Weight of displaced water (m·g)','විස්ථාපිත ජලයේ බර (m·g)'],f(Wwat,2)+' N'],[['Difference','වෙනස'],f(Math.abs(lo-Wwat),3)+' N']);
+return rw(r)+`<p class=ok>✔ ${T(['Apparent loss of weight = weight of displaced water: Archimedes’ principle verified.','දැකිය හැකි බර අඩුවීම = විස්ථාපිත ජලයේ බර: ආකිමිඩීස් මූලධර්මය සත්‍යාපිතයි.'])}</p><div class=fm>g = 10 m/s²</div>`}};
+const AQ=[Q(['The apparent loss of weight of a submerged object equals…','ගිලුණු වස්තුවක දැකිය හැකි බර අඩුවීම ... ට සමානයි'],[['the weight of the object in air','වාතයේ වස්තුවේ බරට'],['the weight of the fluid it displaces','එය විස්ථාපනය කරන ද්‍රවයේ බරට'],['the volume of the object','වස්තුවේ පරිමාවට']],1,['This is Archimedes’ principle: buoyant force = weight of displaced fluid.','මෙය ආකිමිඩීස් මූලධර්මයයි: උඩුකුරු තෙරපුම = විස්ථාපිත ද්‍රවයේ බර.']),
+Q(['Why is the can filled exactly to the spout before the object is lowered?','වස්තුව බස්සවීමට පෙර බඳුන නාලය දක්වා හරියටම පුරවන්නේ ඇයි?'],[['so every drop that overflows is water the object displaced','පිටාර වන සෑම ජල බිංදුවක්ම වස්තුව විස්ථාපනය කළ ජලය වීමට'],['to cool the object','වස්තුව සිසිල් කිරීමට'],['to make the object heavier','වස්තුව බර කිරීමට']],0,['Water below the spout level would hide part of the displaced volume.','නාලයට පහළ ජල මට්ටමක් විස්ථාපිත පරිමාවෙන් කොටසක් සඟවයි.']),
+Q(['W_A = 0.22 N and W_W = 0.12 N. The mass of water displaced is (g = 10 m/s²)…','W_A = 0.22 N, W_W = 0.12 N. විස්ථාපිත ජලයේ ස්කන්ධය (g = 10 m/s²)…'],['10 g','22 g','12 g'],0,['Loss = 0.10 N; m = 0.10 / 10 = 0.01 kg = 10 g.','අඩුවීම = 0.10 N; m = 0.10 / 10 = 0.01 kg = 10 g.'])];
+
+// ---------- Chemistry: Soap making (saponification, hot process) ----------
+const SD=[0,7,9,12,7,10,8];
+const SL=[['1. Dissolve NaOH in water (lye into water)','2. Mix oil + ethanol, add the NaOH solution','3. Heat at 70 °C in a water bath & stir','4. Add brine (salting out)','5. Filter the soap (Buchner funnel)','6. Press into a mould & test with litmus','Restart'],['1. NaOH ජලයේ දියකරන්න (ලයි ජලයට)','2. තෙල් + එතනෝල් මිශ්‍ර කර NaOH ද්‍රාවණය එක් කරන්න','3. ජල ස්නානයේ 70 °C දී රත් කර කලවම් කරන්න','4. ලුණු ජලය එක් කරන්න (salting out)','5. සබන් පෙරන්න (බුච්නර් පුනීලය)','6. අච්චුවක තද කර ලිට්මස් පරීක්ෂාව කරන්න','නැවත ආරම්භ කරන්න']];
+const SX=[['Press the button to begin the saponification (hot process).','NaOH dissolves exothermically – always add the lye to the water, never water to lye. Let it cool slightly.','Oil + ethanol (co-solvent) and the NaOH solution are combined in the flask.','Heated at ≈70 °C with continuous stirring for 10–15 min until a uniform, cloudy paste forms (fat + NaOH → soap + glycerol).','Brine raises the Na⁺ concentration (common-ion effect), so soap precipitates (salting out) and floats above the aqueous glycerol layer.','Suction filtration keeps the solid soap curds on the paper; glycerol + brine pass through as filtrate.','The soap is pressed into a mould. A soap solution turns red litmus blue: it is basic.'],['සබන්කරණය (උණුසුම් ක්‍රමය) ආරම්භ කිරීමට බොත්තම ඔබන්න.','NaOH දියවීම තාපදායකයි – සැමවිටම ලයි ජලයට එක් කරන්න, ජලය ලයිවලට නොවේ. මදක් සිසිල් වීමට දෙන්න.','තෙල් + එතනෝල් (සහ-ද්‍රාවකය) හා NaOH ද්‍රාවණය ප්ලාස්කුවට එක් කරයි.','≈70 °C දී අඛණ්ඩව කලවම් කරමින් මිනිත්තු 10–15ක් රත් කරන විට ඒකාකාර බොර පේස්ට් එකක් සෑදේ (මේද + NaOH → සබන් + ග්ලිසරෝල්).','ලුණු ජලය Na⁺ සාන්ද්‍රණය වැඩි කරයි (පොදු අයන ආචරණය); සබන් අවක්ෂේප වී (salting out) ජලීය ග්ලිසරෝල් ස්තරයට ඉහළින් පාවේ.','රික්ත පෙරීමෙන් ඝන සබන් කැට පෙරහනේ රැඳේ; ග්ලිසරෝල් + ලුණු ජලය පෙරනය ලෙස යයි.','සබන් අච්චුවක තද කරයි. සබන් ද්‍රාවණය රතු ලිට්මස් නිල් කරයි: එය භාස්මිකයි.']];
+const SOAP={n:['Soap Making (Saponification)','සබන් නිෂ්පාදනය (සබන්කරණය)'],
+th:['Saponification: fats/oils (triglycerides) react with a strong alkali (NaOH) to give soap (sodium salts of fatty acids) and glycerol. Hot process: oil + ethanol (co-solvent) + 20 % NaOH are heated at ≈70 °C with stirring until a uniform paste forms; saturated NaCl (salting out, common-ion effect) precipitates the soap, which is filtered, pressed into a mould and tested with red litmus.<div class=fm>Reagents & equipment: coconut / olive / palm / castor oil, NaOH, distilled water, ethanol, NaCl, beakers, conical flask, measuring cylinder, glass rod, thermometer, water bath, Buchner funnel, moulds. Safety: goggles, gloves, lab coat; add lye to water (never water to lye); work in a ventilated area.</div>','සබන්කරණය: තෙල්/මේද (ට්‍රයිග්ලිසරයිඩ) ප්‍රබල ක්ෂාරයක් (NaOH) සමඟ ප්‍රතික්‍රියා කර සබන් (මේද අම්ලවල සෝඩියම් ලවණ) හා ග්ලිසරෝල් ලබා දේ. උණුසුම් ක්‍රමය: තෙල් + එතනෝල් (සහ-ද්‍රාවකය) + 20 % NaOH ≈70 °C දී ඒකාකාර පේස්ට් එකක් සෑදෙන තෙක් කලවම් කරමින් රත් කරයි; සංතෘප්ත NaCl (salting out – පොදු අයන ආචරණය) මගින් සබන් අවක්ෂේප කර, පෙරා, අච්චුවක තද කර රතු ලිට්මස් වලින් පරීක්ෂා කරයි.<div class=fm>ද්‍රව්‍ය හා උපකරණ: පොල්/ඔලිව්/පාම්/එඬේරු තෙල්, NaOH, ආසුත ජලය, එතනෝල්, NaCl, බීකර, කේතු ප්ලාස්කුව, මැනුම් සිලින්ඩරය, වීදුරු කූරු, උෂ්ණත්වමානය, ජල ස්නානය, බුච්නර් පුනීලය, අච්චු. ආරක්ෂාව: ඇස් ආවරණ, අත්වැසුම්, රසායනාගාර කබාය; ලයි ජලයට එක් කරන්න (ජලය ලයිවලට කිසිවිටෙක නොවේ); හොඳ වාතාශ්‍රයක් ඇති තැනක වැඩ කරන්න.</div>'],
+st:[['Dissolve NaOH pellets in distilled water (≈20 % solution): always add lye to water and let it cool slightly.','Mix coconut oil with ethanol in a flask and add the NaOH solution.','Heat in a water bath (~70 °C) with continuous stirring for 10–15 min until a uniform, cloudy paste forms.','Add saturated NaCl solution and stir: the soap precipitates (salting out).','Filter the soap (gravity or Buchner suction filtration).','Press the soap into a mould to harden; test a soap solution with red litmus – it turns blue.'],['NaOH ගුලි ආසුත ජලයේ දියකරන්න (≈20 % ද්‍රාවණය): ලයි ජලයට එක් කරන්න; මදක් සිසිල් වීමට දෙන්න.','ප්ලාස්කුවේ පොල්තෙල් එතනෝල් සමඟ මිශ්‍ර කර NaOH ද්‍රාවණය එක් කරන්න.','ජල ස්නානයක (~70 °C) අඛණ්ඩව කලවම් කරමින් ඒකාකාර බොර පේස්ට් එකක් සෑදෙන තෙක් මිනිත්තු 10–15ක් රත් කරන්න.','සංතෘප්ත NaCl ද්‍රාවණය එක් කර කලවම් කරන්න: සබන් අවක්ෂේප වේ (salting out).','සබන් පෙරන්න (ගුරුත්ව හෝ බුච්නර් රික්ත පෙරීම).','සබන් අච්චුවක තද කර ගනී; සබන් ද්‍රාවණයක් රතු ලිට්මස් සමඟ පරීක්ෂා කරන්න – එය නිල් වේ.']],
+ctl:[{k:'om',l:['Coconut oil (g)','පොල්තෙල් (g)'],min:10,max:40,step:10,v:20,u:' g'},{k:'sp',l:['Animation speed','සජීවීකරණ වේගය'],min:1,max:3,step:1,v:1,u:'×'}],
+btn:[{l:()=>{const s=cur.s;if(s.step>0&&s.p<1)return['⏳ Working…','⏳ සිදු වෙමින්…'];return[SL[0][s.step],SL[1][s.step]]},dis:()=>cur.s.step>0&&cur.s.p<1,f(){const s=cur.s;if(s.step==6)return load(ci);s.step++;s.p=0}}],
+init:()=>({step:0,p:0,T:25,TA:25,sa:0,bu:Array.from({length:30},()=>Math.random())}),cam:[0,0,18,1,3.4],
+build(r){const s=this.s,st=STL();mkHeat(s);
+s.A=mkPourer(-5.2,0xbfe9ff,['NaOH solution','NaOH ද්‍රාවණය'],1.3);s.O=mkPourer(4.4,0xf5c242,['Coconut oil + ethanol','පොල්තෙල් + එතනෝල්'],1.3);s.B=mkPourer(6.7,0xe8f1f5,['Brine (sat. NaCl)','ලුණු ජලය (සංතෘප්ත NaCl)'],1.2);
+s.tA=thermo(r,[-4.2,.1,0]);s.pe=PT(24,0xffffff,.16);s.tpl=tag(['NaOH pellets','NaOH ගුලි'],[-5.2,3.9,0],0,.7);
+const bh=s.bh=new THREE.Group();bh.position.set(-5.4,0,0);r.add(bh);
+cy(.35,.9,1.8,GL,[0,.9,0],bh,1);cy(.9,.9,.05,GL,[0,.03,0],bh);cy(.45,.35,.3,M(0xb45309),[0,1.95,0],bh);cy(.12,.12,.8,M(0xf1f5f9),[0,2.4,0],bh);
+cy(1.2,.35,.9,M(0xf1f5f9,{side:2}),[0,3.05,0],bh,1);cy(.4,.35,.04,M(0xffffff),[0,2.62,0],bh);pipe([.3,1.4,0],[1.5,1.4,0],.06,M(0x9ca3af),bh);
+s.fl2=mesh(ug(new THREE.CylinderGeometry(.5,.8,1,28)),M(0xcfe6f2,{transparent:true,opacity:.8}),[0,.06,0],bh);s.fl2.scale.y=.001;
+s.cd=mesh(new THREE.SphereGeometry(.6,16,12),M(0xfaf7ee),[0,2.8,0],bh);s.cd.scale.set(.001,.001,.001);
+tag(['Buchner funnel','බුච්නර් පුනීලය'],[0,4.3,0],bh,.7);tag(['Filtrate','පෙරනය'],[0,-.5,.9],bh,.6);tag(['to vacuum','රික්තයට'],[1.9,1.9,0],bh,.5);
+s.pd=PT(16,0x9ad0ff,.09);
+const md=s.md=new THREE.Group();md.position.set(-2.9,0,0);r.add(md);mesh(new THREE.BoxGeometry(2.4,.5,1.4),M(0x7c5a3a),[0,.25,0],md);mesh(new THREE.BoxGeometry(2.0,.12,1.0),M(0x4a3524),[0,.5,0],md);
+s.sb=mesh(ug(new THREE.BoxGeometry(1.9,1,.9)),M(0xfaf7ee,{roughness:.6}),[0,.56,0],md);s.sb.scale.y=.001;s.pp=mesh(new THREE.BoxGeometry(1.9,.12,.9),M(0x94a3b8,{metalness:.8}),[0,2.4,0],md);tag(['Mould','අච්චුව'],[0,3.1,0],md,.6);
+const lb=s.lb=new THREE.Group();lb.position.set(2.95,0,0);r.add(lb);cy(.6,.55,1.4,GL,[0,.7,0],lb,1);cy(.55,.55,.05,M(0xcbd5e1,{transparent:true,opacity:.7}),[0,.03,0],lb);
+const sw=mesh(ug(new THREE.CylinderGeometry(.52,.52,1,28)),M(0xe8f1f5,{transparent:true,opacity:.75}),[0,.05,0],lb);sw.scale.y=.95;tag(['Soap solution','සබන් ද්‍රාවණය'],[0,1.9,0],lb,.65);
+s.lt=mesh(new THREE.BoxGeometry(.22,1.6,.03),M(0xdc2626),[2.95,3.2,.1]);tag(['Red litmus paper','රතු ලිට්මස් කඩදාසිය'],[0,1.1,.2],s.lt,.55);
+s.sm1=PT(20,0xffffff,.1);s.sm2=PT(24,0xf6f1e4,.11)},
+tick(dt,t){const s=this.s,st=s.step,G=teG;if(st>0&&s.p<1)s.p=Math.min(1,s.p+dt*s.sp/SD[st]);
+const p=s.p,q=(k,a,b)=>st>k?1:st<k?0:G(p,a,b),kL=Math.sqrt(s.om/20);
+heatTick(s,dt,t,st>=3&&st<=4?70:25,st==3,st==3,55);
+s.TA=st==0?25:st==1?25+38*teE(G(p,.05,.5))-8*G(p,.6,1):55;setT(s.tA,s.TA);s.tA.g.visible=st<2;pelTick(s,st==1&&p>.02&&p<.55,-5.2,t);
+const pmA=pourMove(s.A.g,[-5.2,0],[0,4.3],st==2?G(p,.5,1):st>2?1:0,1,.8,1.8),pmO=pourMove(s.O.g,[4.4,0],[0,4.3],st==2?G(p,0,.5):st>2?1:0,-1,.8,1.8),pmB=pourMove(s.B.g,[6.7,0],[0,4.3],st==4?p:st>4?1:0,-1,.8,1.8),pmF=pourMove(s.fk,[0,.62],[-5.4,3.9],st==5?p:st>5?1:0,-1,.3,3.4);
+s.A.l.scale.y=Math.max(.001,s.A.lv*(1-pmA.emp));s.O.l.scale.y=Math.max(.001,s.O.lv*(1-pmO.emp));s.B.l.scale.y=Math.max(.001,s.B.lv*(1-pmB.emp));
+s.A.g.visible=st<3;s.O.g.visible=st<3;s.B.g.visible=st<5;s.bh.visible=st>=3;
+const emA=pmA.emp,emO=pmO.emp,emB=pmB.emp,emF=pmF.emp;let bot,top,cB,cT;
+if(st<4){bot=.6*kL*emA;top=.8*kL*emO;const mx=q(3,.12,.85);cB=teC(0xbfe9ff,0xf0dfb0,mx);cT=teC(0xf5c242,0xf0dfb0,mx)}
+else{const sep=st==4?G(p,.55,1):1;bot=(.6+.55*emB)*kL*(1-G(emF,.5,1));top=.8*kL*(1-G(emF,0,.5));cB=teC(0xf0dfb0,0xdbeaf2,sep);cT=teC(0xf0dfb0,0xfaf7ee,sep)}
+fillV(s.fv,0,0,bot);fillV(s.fv,1,bot,bot+top);s.fv.m[0].material.color.copy(cB);s.fv.m[1].material.color.copy(cT);
+const sA=pmA.pour>.05?pmA:pmO.pour>.05?pmO:pmB;s.sm1.material.color.set(pmA.pour>.05?0xbfe9ff:pmO.pour>.05?0xf5c242:0xe8f1f5);
+strm(s.sm1,20,Math.max(pmA.pour,pmO.pour,pmB.pour),sA.lip,.62+bot+top+.02,t);strm(s.sm2,24,pmF.pour,pmF.lip,3.1,t);
+const cg=st<5?0:st==5?G(emF,0,.5):1-q(6,.05,.3);s.cd.scale.set(.85*cg+.001,.55*cg+.001,.85*cg+.001);
+const fr=st<5?0:st==5?G(emF,.2,1):1,lv2=Math.min(1.3,.75*kL*fr)+.001;s.fl2.scale.y=lv2;
+const dOn=st==5&&p>.5&&p<.97;s.pd.visible=dOn;if(dOn){for(let i=0;i<16;i++){const u=((i/16)+t*1.4)%1;sp3(s.pd,i,-5.4+Math.sin(i*5)*.02,2.0-(2.0-(.06+lv2))*u,0)}upd(s.pd)}
+s.md.visible=st==6;s.lb.visible=st==6;s.lt.visible=st==6;
+const q6=q(6,.05,.3),pr=G(p,.3,.42)-G(p,.5,.62),hb=Math.max(0,.6*q6-.1*G(p,.3,.42));s.sb.scale.y=Math.max(.001,hb);s.pp.position.y=lerp(2.4,.62+hb,st==6?pr:0);
+const dip=G(p,.62,.78)-G(p,.88,1);s.lt.position.set(2.95,lerp(3.2,1.3,st==6?dip:0),.1);s.lt.material.color.copy(teC(0xdc2626,0x2563eb,st==6?G(p,.72,.9):0))},
+out(){const s=this.s,st=s.step,om=s.om,naoh=om*.185,r=[[['Coconut oil','පොල්තෙල්'],f(om,0)+' g'],[['NaOH needed (≈18.5 % of oil)','අවශ්‍ය NaOH (තෙල්වලින් ≈18.5 %)'],f(naoh,1)+' g'],[['20 % NaOH solution (≈6 M)','20 % NaOH ද්‍රාවණය (≈6 M)'],f(naoh/.2,1)+' g']];
+if(st==1)r.push([['Solution temperature','ද්‍රාවණයේ උෂ්ණත්වය'],f(s.TA,0)+' °C']);if(st>=3)r.push([['Water bath','ජල ස්නානය'],f(s.T,0)+' °C']);
+if(st==3)r.push([['Stirring time (time-lapse)','කලවම් කළ කාලය (වේගවත්)'],f(15*teG(s.p,.05,.95),0)+' min']);
+if(st>=5)r.push([['Theoretical soap','න්‍යායික සබන්'],f(om*1.04,1)+' g'],[['Soap collected (≈85 %)','ලැබුණු සබන් (≈85 %)'],f(om*1.04*.85,1)+' g'],[['Glycerol formed (theory)','සෑදුණු ග්ලිසරෝල් (න්‍යාය)'],f(om*.14,1)+' g']);
+if(st==6&&s.p>.8)r.push([['Red litmus in soap solution','සබන් ද්‍රාවණයේ රතු ලිට්මස්'],T(['turns blue → basic','නිල් වේ → භාස්මික'])]);
+return rw(r)+`<p class=fm>${T([SX[0][st],SX[1][st]])}</p>`}};
+const SQ=[Q(['Why is NaOH added to water (not water to NaOH)?','NaOH ජලයට එක් කරන්නේ ඇයි (ජලය NaOH වලට නොව)?'],[['Dissolving is strongly exothermic; a large volume of water absorbs the heat safely','දියවීම ඉතා තාපදායකයි; විශාල ජල ප්‍රමාණයක් තාපය ආරක්ෂිතව උරා ගනී'],['NaOH only dissolves in cold water','NaOH දියවන්නේ සීතල ජලයේ පමණි'],['It makes the soap whiter','එය සබන් සුදු කරයි']],0,['Adding water to lye can spit hot caustic liquid.','ජලය ලයිවලට එක් කිරීමෙන් උණු විඛාදනකාරී ද්‍රවය විසිවිය හැක.']),
+Q(['Adding saturated NaCl makes the soap precipitate because of…','සංතෘප්ත NaCl එක් කිරීමෙන් සබන් අවක්ෂේප වන්නේ…'],[['the common-ion effect (high Na⁺ concentration)','පොදු අයන ආචරණය (ඉහළ Na⁺ සාන්ද්‍රණය)'],['neutralisation of the soap','සබන් උදාසීන වීම'],['evaporation of water','ජලය වාෂ්ප වීම']],0,['Extra Na⁺ pushes the soap solubility equilibrium towards solid soap.','අමතර Na⁺ මගින් සබන් ඝන බවට පත් වීමට සමතුලිතතාව තල්ලු වේ.']),
+Q(['A soap solution turns red litmus…','සබන් ද්‍රාවණයක් රතු ලිට්මස්…'],[['blue, because soap is basic','නිල් කරයි, සබන් භාස්මික බැවින්'],['white','සුදු කරයි'],['no change, because soap is acidic','වෙනසක් නැත, සබන් ආම්ලික බැවින්']],0,['Soap is the salt of a strong base and a weak acid, so it hydrolyses to give OH⁻.','සබන් ප්‍රබල භෂ්මයක හා දුර්වල අම්ලයක ලවණයකි; ජල විච්ඡේදනයෙන් OH⁻ ලබා දේ.'])];
+
+// ---------- Chemistry: Biodiesel (transesterification) ----------
+const BD=[0,7,8,12,14,12],pfS=y=>y<.7?.09:y<2.3?.09+.91*Math.sin((y-.7)/1.6*Math.PI/2):y<3.7?.25+.75*Math.cos((y-2.3)/1.4*Math.PI/2):.25;
+const BL=[['1. Filter & warm the oil (50–60 °C)','2. Prepare methoxide (NaOH in methanol)','3. Pour methoxide into the oil & react','4. Transfer to funnel & let it settle','5. Drain glycerol & wash the biodiesel','Restart'],['1. තෙල් පෙරා රත් කරන්න (50–60 °C)','2. මෙතොක්සයිඩ් සාදන්න (මෙතනෝල්වල NaOH)','3. මෙතොක්සයිඩ් තෙල්වලට වත් කර ප්‍රතික්‍රියා කරන්න','4. පුනීලයට මාරු කර තැන්පත් වීමට දෙන්න','5. ග්ලිසරෝල් ඉවත් කර ජෛව ඩීසල් සෝදන්න','නැවත ආරම්භ කරන්න']];
+const BX=[['Press the button to start (the oil must be filtered and dry).','Residual water would ruin the reaction (soap forms), so the oil is warmed to drive it off.','NaOH dissolves in methanol to give sodium methoxide: caustic and toxic, handle with care.','Methoxide is poured slowly into the warm oil and stirred at 50–65 °C (transesterification).','The mixture settles: dense glycerol (dark) sinks below the lighter biodiesel (methyl esters).','Glycerol is drained from the bottom; the biodiesel is washed gently with warm water to remove soap and catalyst.'],['ආරම්භ කිරීමට බොත්තම ඔබන්න (තෙල් පෙරූ හා වියළි විය යුතුය).','ඉතිරි ජලය ප්‍රතික්‍රියාව නරක් කරයි (සබන් සෑදේ), එබැවින් තෙල් රත් කර ජලය ඉවත් කරයි.','NaOH මෙතනෝල්වල දියවී සෝඩියම් මෙතොක්සයිඩ් ලබා දේ: විඛාදනකාරී හා විෂ සහිතයි, පරෙස්සමින් හසුරුවන්න.','මෙතොක්සයිඩ් උණුසුම් තෙල්වලට සෙමින් වත් කර 50–65 °C දී කලවම් කරයි (එස්ටර්ඝටනය).','මිශ්‍රණය තැන්පත් වේ: ඝන ග්ලිසරෝල් (අඳුරු) සැහැල්ලු ජෛව ඩීසල් (මෙතයිල් එස්ටර) යටට ගිලේ.','ග්ලිසරෝල් පහළින් ඉවත් කරයි; සබන් හා උත්ප්‍රේරකය ඉවත් කිරීමට ජෛව ඩීසල් උණුසුම් ජලයෙන් මෘදුව සෝදයි.']];
+const BIO={n:['Biodiesel from Vegetable Oil','ශාක තෙල්වලින් ජෛව ඩීසල්'],
+th:['Transesterification: a triglyceride (vegetable oil) reacts with methanol in the presence of a base catalyst (NaOH/KOH, as sodium methoxide) to give fatty-acid methyl esters (biodiesel) and glycerol. The oil must be dry: water causes saponification (soap). Glycerol is denser, so it settles below the biodiesel.<div class=fm>Materials: filtered vegetable / waste cooking oil (100–200 mL), methanol (≈20 % of oil volume), NaOH or KOH (≈4 g per litre of oil), beakers, flask, hot plate, separating funnel, warm distilled water. Safety: methanol is toxic and flammable, lye is corrosive: goggles, gloves, lab coat, good ventilation.</div>','එස්ටර්ඝටනය: ට්‍රයිග්ලිසරයිඩයක් (ශාක තෙල්) භාස්මික උත්ප්‍රේරකයක් (NaOH/KOH – සෝඩියම් මෙතොක්සයිඩ් ලෙස) සමඟ මෙතනෝල් සමඟ ප්‍රතික්‍රියා කර මේද අම්ල මෙතයිල් එස්ටර (ජෛව ඩීසල්) හා ග්ලිසරෝල් ලබා දේ. තෙල් වියළි විය යුතුය: ජලය නිසා සබන්කරණය (සබන්) සිදු වේ. ග්ලිසරෝල් ඝනත්වයෙන් වැඩි නිසා ජෛව ඩීසල් යටින් තැන්පත් වේ.<div class=fm>ද්‍රව්‍ය: පෙරූ ශාක/අපද්‍රව්‍ය පිසින තෙල් (100–200 mL), මෙතනෝල් (තෙල් පරිමාවෙන් ≈20 %), NaOH හෝ KOH (තෙල් ලීටරයකට ≈4 g), බීකර, ප්ලාස්කුව, රත් තහඩුව, වෙන් කරන පුනීලය, උණුසුම් ආසුත ජලය. ආරක්ෂාව: මෙතනෝල් විෂ සහිත හා ගිනිගන්නා සුළුයි, ලයි විඛාදනකාරීයි: ඇස් ආවරණ, අත්වැසුම්, කබාය, හොඳ වාතාශ්‍රය අවශ්‍යයි.</div>'],
+st:[['Filter the oil and warm it to 50–60 °C to drive off moisture.','Dissolve NaOH in methanol to make sodium methoxide (caustic!).','Pour the methoxide slowly into the warm oil; stir at 50–65 °C for 30–60 min.','Transfer to a separating funnel and leave undisturbed for 8–24 h: glycerol (bottom) and biodiesel (top) separate.','Drain the glycerol; wash the biodiesel gently with warm distilled water and let it dry.'],['තෙල් පෙරා තෙත ඉවත් කිරීමට 50–60 °C දක්වා රත් කරන්න.','NaOH මෙතනෝල්වල දියකර සෝඩියම් මෙතොක්සයිඩ් සාදන්න (විඛාදනකාරීයි!).','මෙතොක්සයිඩ් උණුසුම් තෙල්වලට සෙමින් වත් කර 50–65 °C දී මිනිත්තු 30–60ක් කලවම් කරන්න.','වෙන් කරන පුනීලයට මාරු කර පැය 8–24ක් නොසෙලවී තබන්න: ග්ලිසරෝල් (පහළ) හා ජෛව ඩීසල් (ඉහළ) වෙන් වේ.','ග්ලිසරෝල් ඉවත් කර ජෛව ඩීසල් උණුසුම් ආසුත ජලයෙන් මෘදුව සෝදා වියළන්න.']],
+ctl:[{k:'ov',l:['Oil volume (mL)','තෙල් පරිමාව (mL)'],min:100,max:200,step:25,v:100,u:' mL'},{k:'sp',l:['Animation speed','සජීවීකරණ වේගය'],min:1,max:3,step:1,v:1,u:'×'}],
+btn:[{l:()=>{const s=cur.s;if(s.step>0&&s.p<1)return['⏳ Working…','⏳ සිදු වෙමින්…'];return[BL[0][s.step],BL[1][s.step]]},dis:()=>cur.s.step>0&&cur.s.p<1,f(){const s=cur.s;if(s.step==5)return load(ci);s.step++;s.p=0}}],
+init:()=>({step:0,p:0,T:25,TA:25,sa:0,bu:Array.from({length:30},()=>Math.random())}),cam:[0,0,19,1.2,4.2],
+build(r){const s=this.s,st=STL(),PI=Math.PI;mkHeat(s);
+s.M=mkPourer(-5.2,0xe6f7ff,['Methanol','මෙතනෝල්'],1.3);s.W=mkPourer(3.5,0xdff1fa,['Warm distilled water','උණුසුම් ආසුත ජලය'],1.2);
+s.tA=thermo(r,[-4.2,.1,0]);s.pe=PT(24,0xffffff,.16);s.tpl=tag(['NaOH pellets','NaOH ගුලි'],[-5.2,3.9,0],0,.7);
+mesh(new THREE.BoxGeometry(2.2,.2,1.6),M(0x475569,{metalness:.6}),[8.1,.1,0]);cy(.07,.07,7.4,st,[8.3,3.7,0]);cy(.05,.05,1.9,st,[7.35,3.2,0]).rotation.z=PI/2;mesh(new THREE.TorusGeometry(.7,.04,8,28),st,[6.4,3.2,0]).rotation.x=PI/2;
+const fG=s.fG=new THREE.Group();fG.position.set(6.4,1.9,0);r.add(fG);s.fn=mkVes(fG,pfS,4.1,0xe9b84a);
+cy(.12,.12,.5,M(0xf0b429),[0,.45,0],fG).rotation.z=PI/2;s.hd=mesh(new THREE.BoxGeometry(.5,.07,.07),M(0xef4444),[.32,.45,0],fG);s.stp=cy(.3,.22,.35,M(0x2563eb),[0,4.28,0],fG);
+cy(.6,.55,1.4,GL,[6.4,.7,0],0,1);cy(.55,.55,.05,M(0xcbd5e1,{transparent:true,opacity:.7}),[6.4,.03,0]);
+s.cb=mesh(ug(new THREE.CylinderGeometry(.52,.52,1,28)),M(0x4a2a0e,{transparent:true,opacity:.9}),[6.4,.05,0]);s.cb.scale.y=.001;
+tag(['Separating funnel','වෙන් කරන පුනීලය'],[8.1,6.4,0],0,.8);tag(['Glycerol beaker','ග්ලිසරෝල් බීකරය'],[6.4,-.55,1],0,.65);
+s.sm1=PT(20,0xe6f7ff,.1);s.sm2=PT(24,0xc58a2a,.11);s.sm3=PT(20,0xdff1fa,.1);s.sd=PT(16,0x4a2a0e,.1)},
+tick(dt,t){const s=this.s,st=s.step,G=teG;if(st>0&&s.p<1)s.p=Math.min(1,s.p+dt*s.sp/BD[st]);
+const p=s.p,q=(k,a,b)=>st>k?1:st<k?0:G(p,a,b),kO=Math.sqrt(s.ov/100),ho=1.1*kO,mh=.45*kO,htot=1.9*kO;
+heatTick(s,dt,t,st>=1&&st<=3?(st==3?58:55):25,st>=1&&st<=3,st==3,50);
+s.TA=st<2?25:st==2?25+18*teE(G(p,.05,.5)):43;setT(s.tA,s.TA);s.tA.g.visible=st<3;pelTick(s,st==2&&p>.02&&p<.55,-5.2,t);
+const pmM=pourMove(s.M.g,[-5.2,0],[0,4.3],st==3?G(p,0,.35):st>3?1:0,1,.8,1.8),pmF=pourMove(s.fk,[0,.62],[6.4,6.3],st==4?G(p,0,.4):st>4?1:0,1,.3,3.4),pmW=pourMove(s.W.g,[3.5,0],[6.4,6.3],st==5?G(p,.5,1):0,1,.8,1.8);
+s.M.l.scale.y=Math.max(.001,s.M.lv*(1-pmM.emp));s.W.l.scale.y=Math.max(.001,s.W.lv*(1-pmW.emp));s.M.g.visible=st<4;s.W.g.visible=st>=4;
+const emM=pmM.emp,emF=pmF.emp,emW=pmW.emp;let bot,top,cB,cT;
+if(st<4){bot=ho;top=mh*emM;const mx=q(3,.4,.95);cB=teC(0xe0a82e,0xc58a2a,mx);cT=teC(0xe6f7ff,0xc58a2a,mx)}
+else{bot=ho*(1-G(emF,.4,1));top=mh*(1-G(emF,0,.4));cB=teC(0xc58a2a,0xc58a2a,0);cT=teC(0xc58a2a,0xc58a2a,0)}
+fillV(s.fv,0,0,bot);fillV(s.fv,1,bot,bot+top);s.fv.m[0].material.color.copy(cB);s.fv.m[1].material.color.copy(cT);
+const e4=st<4?0:st==4?emF:1,sep=st==4?G(p,.45,.98):st>4?1:0,dr=st==5?G(p,.05,.5):0,gB=(.2*htot*sep*(1-dr)+.25*htot*emW)*e4,gT=(1-.2*sep)*htot*e4;
+fillV(s.fn,0,0,gB);fillV(s.fn,1,gB,gB+gT);s.fn.m[0].material.color.copy(teC(0x4a2a0e,0xdff1fa,emW));s.fn.m[1].material.color.copy(teC(0xc58a2a,0xe9b84a,sep));
+strm(s.sm1,20,pmM.pour,pmM.lip,.62+bot+top+.02,t);strm(s.sm2,24,pmF.pour,pmF.lip,1.9+gB+gT+.02,t);strm(s.sm3,20,pmW.pour,pmW.lip,1.9+gB+gT+.02,t);
+const cg=.9*dr,dOn=st==5&&dr>.02&&dr<.98;s.cb.scale.y=Math.max(.001,cg);s.sd.visible=dOn;if(dOn){for(let i=0;i<16;i++){const u=((i/16)+t*1.4)%1;sp3(s.sd,i,6.4+Math.sin(i*5)*.02,1.9-(1.9-(.07+cg))*u,0)}upd(s.sd)}
+s.hd.rotation.z=dOn?Math.PI/2:0;s.stp.visible=!(st==4&&p>.05&&p<.5)},
+out(){const s=this.s,st=s.step,ov=s.ov,sep=st==4?teG(s.p,.45,.98):st>4?1:0,r=[[['Oil volume','තෙල් පරිමාව'],f(ov,0)+' mL'],[['Methanol (≈20 % of oil)','මෙතනෝල් (තෙල්වලින් ≈20 %)'],f(ov*.2,0)+' mL'],[['NaOH catalyst (≈4 g per litre)','NaOH උත්ප්‍රේරකය (ලීටරයකට ≈4 g)'],f(ov*.004,2)+' g']];
+if(st>=1&&st<=3)r.push([['Water bath','ජල ස්නානය'],f(s.T,0)+' °C']);if(st==2)r.push([['Methoxide mixture','මෙතොක්සයිඩ් මිශ්‍රණය'],f(s.TA,0)+' °C']);
+if(st==3)r.push([['Reaction time (time-lapse)','ප්‍රතික්‍රියා කාලය (වේගවත්)'],f(30+30*teG(s.p,.4,.98),0)+' min']);
+if(st==4)r.push([['Settling time (time-lapse)','තැන්පත් වන කාලය (වේගවත්)'],f(24*sep,0)+' h']);
+if(st>=5)r.push([['Biodiesel layer ≈','ජෛව ඩීසල් ස්තරය ≈'],f(ov*.87,0)+' mL'],[['Glycerol layer ≈','ග්ලිසරෝල් ස්තරය ≈'],f(ov*.2,0)+' mL']);
+return rw(r)+`<p class=fm>${T([BX[0][st],BX[1][st]])}</p>`}};
+const BQ=[Q(['Why must the oil be dry?','තෙල් වියළි විය යුත්තේ ඇයි?'],[['Water makes the base saponify the oil into soap instead of biodiesel','ජලය නිසා භෂ්මය තෙල් ජෛව ඩීසල් වෙනුවට සබන් බවට සබන්කරණය කරයි'],['Water raises the boiling point of methanol','ජලය මෙතනෝල්වල තාපාංකය ඉහළ දමයි'],['Water colours the fuel','ජලය ඉන්ධන වර්ණ ගන්වයි']],0,['Soap formation wastes oil and makes separation difficult.','සබන් සෑදීමෙන් තෙල් නාස්ති වී වෙන් කිරීම අපහසු වේ.']),
+Q(['After settling, the bottom layer is…','තැන්පත් වූ පසු පහළ ස්තරය…'],[['glycerol (denser)','ග්ලිසරෝල් (ඝනත්වය වැඩියි)'],['biodiesel','ජෛව ඩීසල්'],['methanol vapour','මෙතනෝල් වාෂ්ප']],0,['Glycerol is denser than the methyl esters, so it sinks.','ග්ලිසරෝල් මෙතයිල් එස්ටරවලට වඩා ඝනයි, එබැවින් යටට ගිලේ.']),
+Q(['Sodium methoxide is made by dissolving…','සෝඩියම් මෙතොක්සයිඩ් සාදන්නේ ... දියකිරීමෙනි'],[['NaOH (or KOH) in methanol','මෙතනෝල්වල NaOH (හෝ KOH)'],['methanol in water','ජලයේ මෙතනෝල්'],['oil in NaOH solution','NaOH ද්‍රාවණයේ තෙල්']],0,['It is the active catalyst for transesterification.','එය එස්ටර්ඝටනයේ සක්‍රීය උත්ප්‍රේරකයයි.'])];
+
+// register: Archimedes goes into the Physics list (index 5); soap + biodiesel join Chemistry
+P.splice(5,0,AR);IC.splice(5,0,'⚓');QZ.splice(5,0,AQ);
+P.push(SOAP,BIO);IC.push('🧼','⛽');QZ.push(SQ,BQ);
+
 function side(){const row=i=>`<button class="it ${i==ci?'on':''}" data-i=${i}><span>${IC[i]}</span><span>${T(P[i].n)}</span></button>`;
-$('#sb').innerHTML=`<div class=sh2>⚛️ ${T(['Physics','භෞතික විද්‍යාව'])}</div>`+[0,1,2,3,4].map(row).join('')+`<div class=sh2>🧪 ${T(['Chemistry','රසායන විද්‍යාව'])}</div>`+P.slice(5).map((p,j)=>row(j+5)).join('');
+$('#sb').innerHTML=`<div class=sh2>⚛️ ${T(['Physics','භෞතික විද්‍යාව'])}</div>`+[0,1,2,3,4,5].map(row).join('')+`<div class=sh2>🧪 ${T(['Chemistry','රසායන විද්‍යාව'])}</div>`+P.slice(6).map((p,j)=>row(j+6)).join('');
 $('#cur').textContent=IC[ci]+' '+T(P[ci].n);$('#sb').querySelectorAll('.it').forEach(b=>b.onclick=()=>{load(+b.dataset.i);lang_();sbc()})}
 function sx(){$('#cv').hidden=$('#pn').hidden=false;$('#cs').hidden=true}
 
