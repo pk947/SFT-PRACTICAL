@@ -240,6 +240,58 @@ details{order:2}
 #wz{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
 #wz button{padding:0 6px;font-size:13.5px;line-height:1.15;white-space:normal}
 #wm-wrap{min-width:68px}#wpb{width:64px}
+
+/* ===== DESKTOP / SMART-BOARD MODE (screens wider than 860px): full-screen simulation + popups ===== */
+body.dm{--hb:rgba(20,27,40,.80)}
+:root[data-theme=light] body.dm{--hb:rgba(255,255,255,.86)}
+@media (prefers-color-scheme:light){:root:not([data-theme=dark]) body.dm{--hb:rgba(255,255,255,.86)}}
+body.dm main{display:block;position:relative;padding:12px}
+body.dm #cv{position:absolute;inset:12px;margin:0;height:auto;min-height:0}
+body.dm #cs{position:absolute;inset:12px}
+body.dm #pn,body.dm #pt,body.dm #dk{display:none!important}
+body.dm #vt{top:12px;right:12px}
+body.dm #hint{left:50%;bottom:auto;top:18px;transform:translateX(-50%);padding:5px 12px;border-radius:99px;background:var(--hb);white-space:nowrap}
+#dsk{position:absolute;inset:0;z-index:8;pointer-events:none}
+#dsk>*{pointer-events:auto}
+#dtb{position:absolute;left:12px;top:12px;display:flex;gap:8px;z-index:6}
+#dtb button{display:flex;align-items:center;gap:8px;height:52px;padding:0 18px;border-radius:14px;font-size:16px;font-weight:700}
+#dtb button i{font-style:normal;font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px;background:rgba(127,127,127,.3)}
+#dtb button.on{background:linear-gradient(180deg,#8be6ff,#1593c4 60%,#0b6f99)!important;color:#fff!important}
+#dtb button.on i{background:rgba(0,0,0,.25)}
+#popS{position:absolute;left:12px;top:76px;width:min(400px,42%);max-height:calc(100% - 76px - var(--hh,200px) - 30px);display:flex;flex-direction:column;background:var(--pb);color:var(--tx);border:1px solid var(--gb);border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.4);overflow:hidden;z-index:5}
+#popS[hidden]{display:none!important}
+.dph{flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px 8px 16px;font-weight:800;font-size:16px}
+.dph button{width:40px;height:40px;min-height:0;padding:0;border-radius:50%;font-size:17px;line-height:1}
+.dpb{flex:1 1 auto;min-height:0;overflow:auto;padding:0 14px 10px}
+.dpf{flex:none}
+#popS #sc{margin:0 0 8px}
+#mod{position:absolute;inset:0;z-index:9;display:grid;place-items:center}
+#mod[hidden]{display:none!important}
+#mod .mbd{position:absolute;inset:0;background:rgba(5,10,25,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#mod .mdl{position:relative;width:min(780px,92%);max-height:88%;display:flex;flex-direction:column;background:var(--pb);color:var(--tx);border:1px solid var(--gb);border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.55);overflow:hidden}
+#mod .dph{font-size:18px;padding:14px 14px 10px 20px}
+#mod .dpb{padding:0 20px 18px;font-size:17px;line-height:1.6}
+#mod #v1,#mod #v2{flex:none;overflow:visible;padding:0}
+body.dm #v0{position:absolute;left:12px;right:12px;bottom:12px;z-index:5;flex:none;display:flex;flex-direction:row;align-items:stretch;gap:12px;max-height:44%;overflow:auto;padding:10px 12px;border-radius:20px;background:var(--hb);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);border:1px solid var(--gb);box-shadow:0 12px 40px rgba(0,0,0,.35)}
+body.dm #ct{margin:0}
+body.dm .cc{margin:0}
+#cw{position:relative;flex:1 1 auto;min-width:0}
+#rd{min-width:0;border-left:1px solid var(--gb);padding-left:12px}
+#rd h3{margin:0 0 6px;font-size:15px;color:var(--ac)}
+#cw #ct{transition:filter .4s,opacity .4s}
+#cw.idle #ct{filter:blur(6px);opacity:.5;pointer-events:none}
+#cw #wk{display:none;position:absolute;inset:0;z-index:2;place-items:center;padding:0;min-height:0;border:0!important;background:none!important;box-shadow:none!important;border-radius:16px;font-weight:800;font-size:17px;color:var(--tx);text-shadow:0 1px 6px var(--pb);cursor:pointer}
+#cw.idle #wk{display:grid}
+body.dm.nosteps #v0.stp #ct .bt{display:grid!important}
+#rd table{width:100%;border-collapse:collapse}
+#rd td{padding:3px 6px!important;font-size:13px!important;line-height:1.3}
+#rd p{margin:6px 0 0!important;font-size:13px!important;line-height:1.35}
+body.dm #v0{padding:8px 10px;gap:10px}
+body.dm #ct{gap:8px}
+body.dm #ct .cc{padding:7px 12px 9px}
+body.dm #ct .bt button{min-height:40px}
+#rd{flex:0 0 clamp(260px,30%,380px)}
+@media(min-width:1500px){#dtb button{height:60px;font-size:18px;padding:0 22px}#popS{top:84px;width:min(450px,34%);max-height:calc(100% - 84px - var(--hh,200px) - 30px)}#mod .mdl{width:min(920px,70%)}#mod .dpb{font-size:19px}.dph{font-size:18px}#popS #stt{font-size:19px}}
 </style></head><body><div id="ld"><div><div class="at"><div class="ob" style="--r:0deg;--d:1.5s"><i></i><b></b></div><div class="ob" style="--r:60deg;--d:2s"><i></i><b></b></div><div class="ob" style="--r:120deg;--d:2.5s"><i></i><b></b></div><u></u></div><h2>Sci<i>Lab</i></h2><p>Preparing your virtual lab…</p><p>ඔබේ අථත්‍ය විද්‍යාගාරය සූදානම් වෙමින්…</p><div class="pb"><i></i></div></div></div>
 <header class="g"><button id="mn" aria-label="Menu" title="Menu">☰</button><div class="br">Sci<i>Lab</i></div><div id="cur" class="cr2"></div><div id="sx" hidden></div><nav id="nv" hidden></nav><div class="hg"><button id="tm" aria-label="Theme" title="Theme"></button><button id="lg" aria-label="Language" title="Language / භාෂාව">සිං</button></div></header>
 <aside id="sb" class="g"></aside><div id="bd" hidden></div><main><section id="cv" class="g"><div id="hint"></div><button id="pt" class="g vb" type="button"></button><div id="vt" role="toolbar" aria-label="3D view controls"><button class="g vb" id="vi" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M8.5 11h5M11 8.5v5"/></svg></button><button class="g vb" id="vo" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.4-4.4M8.5 11h5"/></svg></button><div class="sep rot"></div><button class="g vb rot" id="vl" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.6-5.9"/><path d="M4 4v5h5"/></svg></button><button class="g vb rot" id="vr" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg></button><div class="sep"></div><button class="g vb" id="vh" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/><circle cx="12" cy="12" r="2.5"/></svg></button><button class="g vb" id="vg" type="button" aria-pressed="true"></button></div><div id="dk" class="g" hidden></div></section>
@@ -259,7 +311,7 @@ sc.add(new THREE.HemisphereLight(0xffffff,0x334466,.85));const dl=new THREE.Dire
 function setCam(){cam.position.set(tg.x+dist*Math.sin(az)*Math.cos(el),tg.y+dist*Math.sin(el),tg.z+dist*Math.cos(az)*Math.cos(el));cam.lookAt(tg)}
 let dr=null;const cd=R.domElement;
 const ptrs=new Map();let pd=0,goal=null,anim=null,labelsOn=true,home=null;
-const clampD=v=>clamp(v,4,30);
+const clampD=v=>clamp(v,4,30);let dm=false,modK=null;
 cd.tabIndex=0;cd.setAttribute('aria-label','3D experiment view. Arrow keys rotate, plus and minus zoom, 0 resets the view.');
 cd.onpointerdown=e=>{goal=anim=null;try{cd.setPointerCapture(e.pointerId)}catch(_){}ptrs.set(e.pointerId,[e.clientX,e.clientY]);dr=[e.clientX,e.clientY];if(ptrs.size==2){const v=[...ptrs.values()];pd=Math.hypot(v[0][0]-v[1][0],v[0][1]-v[1][1])}};
 cd.onpointermove=e=>{const p=ptrs.get(e.pointerId);if(!p)return;
@@ -1004,7 +1056,7 @@ setCam=function(){
  if(anim){anim.t=Math.min(1,anim.t+.05);const k=1-Math.pow(1-anim.t,3);az=anim.az0+anim.d*k;el=anim.el0+(home.el-anim.el0)*k;dist=anim.dist0+(home.dist-anim.dist0)*k;tg.set(anim.x0+(home.x-anim.x0)*k,anim.y0+(home.y-anim.y0)*k,anim.z0+(home.z-anim.z0)*k);
   if(anim.t>=1){anim=null;if(cur&&cur.s&&'ad' in cur.s){cur.s.zf=1;cur.s.ad=dist}}}
  else if(goal){let busy=false;['az','el','dist'].forEach(k=>{if(goal[k]==null)return;const v=k=='az'?az:k=='el'?el:dist,d=goal[k]-v;if(Math.abs(d)<(k=='dist'?.02:.002)){if(k=='az')az=goal[k];else if(k=='el')el=goal[k];else dist=goal[k];goal[k]=null}else{busy=true;const n=v+d*.22;if(k=='az')az=n;else if(k=='el')el=n;else dist=n}});if(!busy)goal=null}
- _setCam();labelPass()};
+ _setCam();viewShift();labelPass()};
 const _pj=new THREE.Vector3(),_ws=new THREE.Vector3();
 function tagVisible(s){for(let o=s;o;o=o.parent)if(!o.visible)return false;return true}
 function labelPass(){
@@ -1015,9 +1067,10 @@ function labelPass(){
   const f=(u.big?1.15:1)*base/26,w=u.w*f,h=u.h*f;s.parent.getWorldScale(_ws);
   const sy=h/H*TAN;s.scale.set(sy*(u.w/u.h)/_ws.x,sy/_ws.y,1);
   items.push({s:s,x:(_pj.x*.5+.5)*W,y:(1-(_pj.y*.5+.5))*H,w:w,h:h})});
- items.sort((a,b)=>b.y-a.y);const placed=[],pt=$('#pt'),vt=$('#vt'),zl=W-10-pt.offsetWidth-6,zb=vt.offsetTop+vt.offsetHeight+6;
- const dxAt=(it,b)=>{const hw=it.w/2;let d=0;if(b-it.h<zb&&it.x+hw>zl)d=zl-(it.x+hw);if(it.x+d-hw<4)d=4-(it.x-hw);if(it.x+d+hw>W-4)d=W-4-(it.x+hw);return d};
- items.forEach(it=>{const hw=it.w/2;let bot=it.y-8,dx=dxAt(it,bot);
+ items.sort((a,b)=>b.y-a.y);const placed=[],vt=$('#vt'),zl=W-10-vt.offsetWidth-6,zb=vt.offsetTop+vt.offsetHeight+6;
+ const ps=$('#popS'),hud=$('#v0'),pz=(dm&&ps&&!ps.hidden)?{r:ps.offsetLeft+ps.offsetWidth+6,t:ps.offsetTop,b:ps.offsetTop+ps.offsetHeight}:null,limB=dm?hud.offsetTop-6:1e9;
+ const dxAt=(it,b)=>{const hw=it.w/2,top=b-it.h;let d=0;if(top<zb&&it.x+hw>zl)d=zl-(it.x+hw);if(pz&&top<pz.b&&b>pz.t&&it.x+d-hw<pz.r)d=pz.r-(it.x-hw);if(it.x+d-hw<4)d=4-(it.x-hw);if(it.x+d+hw>W-4)d=W-4-(it.x+hw);return d};
+ items.forEach(it=>{const hw=it.w/2;let bot=Math.min(it.y-8,limB),dx=dxAt(it,bot);
   for(let n=0;n<12;n++){let hit=null;for(const r of placed)if(it.x+dx-hw<r.r+3&&it.x+dx+hw>r.l-3&&bot-it.h<r.b+2&&bot>r.t-2){hit=r;break}if(!hit)break;bot=hit.t-3;dx=dxAt(it,bot)}
   bot=Math.max(bot,it.h+4);dx=dxAt(it,bot);const r={l:it.x+dx-hw,r:it.x+dx+hw,t:bot-it.h,b:bot};placed.push(r);const u=it.s.userData;u.r=r;
   const tx=clamp(.5-dx/it.w,.1,.9);if(Math.abs(tx-(u.tx==null?.5:u.tx))>.03){u.tx=tx;drawTag(it.s)}
@@ -1044,6 +1097,58 @@ const _setSh=setSh;setSh=function(v){_setSh(v);ptIcon()};
 $('#pt').onclick=()=>{if(innerWidth<=860){const S=SNAP();setSh(mini?S[1]:S[0])}else{po=!po;ptg();scrollTo(0,0)}};
 const _lang=lang_;lang_=function(){_lang();vtText()};
 addEventListener('resize',ptIcon);
+
+/* ===== desktop / smart-board mode: full-screen simulation, HUD controls, popups ===== */
+const moves=[];let dsk=null,shx=0,shy=0,idleT=0,hudIn=false,lastFocus=null;
+function mv(n,to){moves.push([n,n.parentNode,n.nextSibling]);to.appendChild(n)}
+function buildDesk(){dsk=document.createElement('div');dsk.id='dsk';
+ dsk.innerHTML='<div id="dtb" role="toolbar"><button id="dbS" type="button" aria-expanded="true"></button><button id="dbT" type="button"></button><button id="dbQ" type="button"></button></div>'
+ +'<section id="popS" aria-labelledby="popSt"><div class="dph"><span id="popSt"></span><button id="popSx" type="button">✕</button></div><div class="dpb" id="popSb"></div><div class="dpf" id="popSf"></div></section>'
+ +'<div id="mod" hidden><div class="mbd"></div><section class="mdl" role="dialog" aria-modal="true" aria-labelledby="modt"><div class="dph"><span id="modt"></span><button id="modx" type="button">✕</button></div><div class="dpb" id="modb"></div></section></div>';
+ const q=s=>dsk.querySelector(s);
+ q('#dbS').onclick=()=>setSteps(q('#popS').hidden);q('#popSx').onclick=()=>setSteps(false);
+ q('#dbT').onclick=()=>modK=='T'?closeMod():openMod('T');q('#dbQ').onclick=()=>modK=='Q'?closeMod():openMod('Q');
+ q('#modx').onclick=closeMod;q('.mbd').onclick=closeMod;
+ q('.mdl').addEventListener('keydown',e=>{if(e.key!='Tab')return;const f=[...q('.mdl').querySelectorAll('button:not(:disabled)')];if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement==a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement==z){e.preventDefault();a.focus()}})}
+function setSteps(on){const p=$('#popS');if(!p)return;p.hidden=!on;document.body.classList.toggle('nosteps',!on);$('#dbS').classList.toggle('on',on);$('#dbS').setAttribute('aria-expanded',String(on))}
+function openMod(k){modK=k;lastFocus=document.activeElement;$('#mod').hidden=false;$('#v1').hidden=k!='T';$('#v2').hidden=k!='Q';$('#modt').textContent=k=='T'?T(['Theory','න්‍යාය']):T(['Quiz','ප්‍රශ්නාවලිය']);$('#dbT').classList.toggle('on',k=='T');$('#dbQ').classList.toggle('on',k=='Q');if(k=='Q')quiz();$('#modx').focus()}
+function closeMod(){if(!dsk)return;modK=null;$('#mod').hidden=true;$('#v1').hidden=true;$('#v2').hidden=true;$('#dbT').classList.remove('on');$('#dbQ').classList.remove('on');if(lastFocus&&lastFocus.focus)try{lastFocus.focus()}catch(_){}lastFocus=null}
+function dtText(){if(!dsk)return;$('#dbS').innerHTML='<span>🔬</span><span>'+T(['Steps','පියවර'])+'</span><i id="dsn"></i>';$('#dbT').innerHTML='<span>📖</span><span>'+T(['Theory','න්‍යාය'])+'</span>';$('#dbQ').innerHTML='<span>🎯</span><span>'+T(['Quiz','ප්‍රශ්නාවලිය'])+'</span>';
+ $('#popSt').textContent=T(['Practical steps','ප්‍රායෝගික පියවර']);const cl=T(['Close','වසන්න']);$('#popSx').setAttribute('aria-label',cl);$('#popSx').title=cl;$('#modx').setAttribute('aria-label',cl);$('#modx').title=cl;
+ if(modK)$('#modt').textContent=modK=='T'?T(['Theory','න්‍යාය']):T(['Quiz','ප්‍රශ්නාවලිය']);
+ const wk=$('#wk');if(wk)wk.textContent='👆 '+T(['Touch to use controls','පාලක භාවිතයට ස්පර්ශ කරන්න']);const rd=$('#s4');if(rd)rd.textContent=T(UI.s4)}
+/* idle blur of the controls */
+function wake(){const cw=$('#cw');if(!cw||!dm)return;cw.classList.remove('idle');clearTimeout(idleT);if(!hudIn)idleT=setTimeout(()=>{if(!hudIn&&cw)cw.classList.add('idle')},5000)}
+function enterDM(){if(dm)return;dm=true;document.body.classList.add('dm');if(!dsk)buildDesk();$('#cv').appendChild(dsk);
+ const v0=$('#v0'),ct=$('#ct'),cw=document.createElement('div'),wk=document.createElement('button'),rd=document.createElement('div');
+ cw.id='cw';wk.id='wk';wk.type='button';rd.id='rd';
+ moves.push([ct,v0,ct.nextSibling]);v0.insertBefore(cw,ct);cw.appendChild(ct);cw.appendChild(wk);
+ v0.appendChild(rd);mv($('#s4'),rd);mv($('#out'),rd);
+ mv($('#sc'),$('#popSb'));mv($('details'),$('#popSb'));mv($('#wz'),$('#popSf'));
+ mv($('#v1'),$('#modb'));mv($('#v2'),$('#modb'));mv(v0,dsk);
+ wk.onclick=wake;
+ v0.addEventListener('pointerenter',e=>{if(e.pointerType=='mouse'){hudIn=true;wake()}});
+ v0.addEventListener('pointerleave',()=>{hudIn=false;wake()});
+ ['pointermove','pointerdown','keydown','input','focusin'].forEach(ev=>v0.addEventListener(ev,wake,true));
+ dtText();setSteps(true);closeMod();tabs();wake();if(typeof uxRefresh=='function')uxRefresh()}
+function leaveDM(){if(!dm)return;closeMod();clearTimeout(idleT);
+ while(moves.length){const m=moves.pop();m[1].insertBefore(m[0],m[2])}
+ ['#cw','#rd'].forEach(s=>{const e=$(s);if(e)e.remove()});
+ dm=false;document.body.classList.remove('dm','nosteps');if(dsk)dsk.remove();tabs()}
+function applyMode(){const want=innerWidth>860;if(want&&!dm)enterDM();else if(!want&&dm)leaveDM()}
+function dmSync(){$('#v0').hidden=false;$('#wz').hidden=false;$('#v1').hidden=modK!='T';$('#v2').hidden=modK!='Q'}
+const _tabs=tabs;tabs=function(){_tabs();if(dm)dmSync()};
+const _load2=load;load=function(i){_load2(i);if(dm){closeMod();setSteps(true);wake()}};
+const _lang2=lang_;lang_=function(){_lang2();dtText()};
+let _dsn=null;const _ux=uxRefresh;uxRefresh=function(){_ux();if(!dm)return;const m=/(\d+)\D+(\d+)/.exec($('#sl').textContent||''),b=m?m[1]+'/'+m[2]:'',e=$('#dsn');if(e&&e.textContent!==b){e.textContent=b}if(_dsn!==null&&_dsn!==b)wake();_dsn=b};
+document.addEventListener('keydown',e=>{if(e.key=='Escape'&&dm&&modK)closeMod()});
+new ResizeObserver(()=>cv.style.setProperty('--hh',$('#v0').offsetHeight+'px')).observe($('#v0'));
+/* keep the model centred in the part of the screen the HUD and steps card leave free */
+function viewShift(){const W=cv.clientWidth,H=cv.clientHeight;if(!W||!H)return;let tx=0,ty=0;
+ if(dm){const ps=$('#popS'),hud=$('#v0'),L=ps&&!ps.hidden?ps.offsetWidth+24:0,B=hud?hud.offsetHeight+24:0;tx=Math.min(L/2,W*.25);ty=-Math.min(B/2,H*.3)}
+ shx+=(tx-shx)*.12;shy+=(ty-shy)*.12;const e=cam.projectionMatrix.elements;e[8]=-(2*shx/W);e[9]=2*shy/H}
+addEventListener('resize',applyMode);
+applyMode();
 
 lang_();load(0);setInterval(refresh,250);setTimeout(()=>{$('#ld').classList.add('out');setTimeout(()=>$('#ld').remove(),700)},1900);document.fonts&&document.fonts.ready.then(()=>tags.forEach(drawTag));requestAnimationFrame(loop);
 </script></body></html>
