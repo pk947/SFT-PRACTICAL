@@ -1530,7 +1530,7 @@ const gp=(o,p)=>p.split('.').reduce((a,k)=>a==null?a:a[k],o),sp=(o,p,v)=>{const 
 const ppHtml=()=>{const L=(EDIT?W:C).pp||[],ad=EDIT?'<div class="hc" data-padd><div class="ha">➕</div><div class="hb"><b>Add past paper</b></div></div>':'';return`<section class="hs" id="sec-pp"><div class="hsh hbl"><h3>Past papers</h3></div><div class="hcar">`+(L.length?L.map(p=>`<div class="hc"><div class="ha">📄</div><div class="hb"><b>${esc(p.t)}</b><small>${esc([p.s,p.y].filter(Boolean).join(' · '))}</small><button class="pl" data-pp="${esc(p.id)}">Open</button>${EDIT?`<button class="edel" data-pd="${esc(p.id)}">🗑 Delete</button>`:''}</div></div>`).join(''):`<div class="hc"><div class="ha cm">⏳</div><div class="hb"><b>Coming soon</b><small>Past papers will appear here.</small></div></div>`)+ad+`</div></section>`};
 const mo=new MutationObserver(()=>patch());
 function patch(){const h=$('#hm2');if(!h)return;mo.disconnect();try{
- const S=EDIT?W:C,t=S.tx||{},im=(k,el)=>{const u=(S.img||{})[k];if(el&&u)el.innerHTML=`<img src="${u}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">`};
+ const S=EDIT?W:C,t=S.tx||{},im=(k,el)=>{const u=(S.img||{})[k];if(el&&u){el.style.position='relative';el.style.overflow='hidden';el.innerHTML=`<img src="${u}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">`}};
  const a=h.querySelector('.hbt h2'),b=h.querySelector('.hbt p');if(a&&t.wt)a.textContent=t.wt;if(b&&t.wp)b.textContent=t.wp;
  im('banner',h.querySelector('.hbi'));h.querySelectorAll('div.hc[data-o]').forEach(c=>im('c'+c.dataset.o,c.querySelector('.ha')));
  ['creator','why'].forEach(k=>{const s=h.querySelector('#sec-'+k),c=S[k];if(!s||!c)return;const hh=s.querySelector('h3');if(hh&&c.title)hh.textContent=c.title;
@@ -1600,7 +1600,7 @@ async function upImg(k,file,rm){try{const d=rm?'':await rs(file),r=await api({a:
 async function addPP(){const g=n=>$('#'+n).value.trim(),t=g('ppt'),u=g('ppu');if(!t)return alert('Enter a title');if(!/^https?:\/\//i.test(u))return alert('Enter a full link starting with https://');
  W.pp=[...(W.pp||[]),{id:'p'+Date.now().toString(36),t,y:g('ppy'),s:g('pps'),u}];if(await commit())draw()}
 ov.addEventListener('click',async e=>{const b=e.target.closest('[data-a]');if(!b)return;const[a,x,y]=b.dataset.a.split(':');
- if(a=='close')ov.classList.remove('on');else if(a=='login')login();else if(a=='out'){sessionStorage.removeItem('sl_tok');TOK='';exitEdit(1);shell(loginHtml())}else if(a=='edit'){ov.classList.remove('on');EDIT?patch():go2edit()}
+ if(a=='close')ov.classList.remove('on');else if(a=='login')login();else if(a=='out'){sessionStorage.removeItem('sl_tok');TOK='';exitEdit(1);refreshWho();shell(loginHtml())}else if(a=='edit'){ov.classList.remove('on');EDIT?patch():go2edit()}
  else if(a=='tab'){tab=x;draw()}else if(a=='save')commit();else if(a=='rf'){STU=null;draw()}
  else if(a=='addq'){ql().push({q:'',o:['',''],a:0,e:''});draw()}
  else if(a=='delq'){ql().splice(+x,1);draw()}else if(a=='addo'){ql()[+x].o.push('');draw()}
@@ -1619,7 +1619,7 @@ function decor(h){const ed=(el,k,one)=>{if(!el)return;el.contentEditable='true';
 function mark(){dirty=1;tb()}
 function tb(){const b=$('#edtb');if(!b)return;b.querySelector('.edot').className='edot'+(dirty?' d':'');b.querySelector('#edt').textContent=dirty?'Unsaved changes':'Edit mode: click any text or picture'}
 async function go2edit(){ov.classList.remove('on');if(!READY)await sync();if(!READY)return alert('Could not load the current content. Check the connection and try again.');enterEdit()}
-function enterEdit(){if(EDIT)return;W=JSON.parse(JSON.stringify(C));const h=$('#hm2');if(h)seed(h);EDIT=1;dirty=0;
+function enterEdit(){if(EDIT)return;W=JSON.parse(JSON.stringify(C));const h=$('#hm2');if(h)seed(h);EDIT=1;dirty=0;who();
  if(!$('#edtb')){const t=document.createElement('div');t.id='edtb';t.innerHTML='<span class="edot"></span><span id="edt"></span><button class="pri" data-t="pub">🚀 Publish</button><button data-t="quiz">❓ Quizzes</button><button data-t="panel">⚙ Panel</button><button data-t="exit">✕ Exit</button>';document.body.appendChild(t)}
  tb();patch();toast('Edit mode on: click any text or picture')}
 function exitEdit(force){if(!EDIT)return;if(dirty&&!force&&!confirm('Discard unpublished changes?'))return;EDIT=0;dirty=0;const t=$('#edtb');t&&t.remove();const h=$('#hm2');
@@ -1639,6 +1639,9 @@ const hm=$('#hm2');if(hm){
  hm.addEventListener('input',e=>{if(!EDIT)return;const t=e.target,d=t.dataset||{};
   if(d.ek){sp(W,d.ek,t.innerText.replace(/\n+/g,d.one?' ':'\n').trim());mark()}
   else if(d.eg){const st=t.closest('.stx');sp(W,d.eg,[...st.querySelectorAll('p')].map(p=>p.innerText.trim()).filter(Boolean).join('\n\n'));mark()}})}
+function refreshWho(){const sb=$('#sb');if(sb)sb.innerHTML='';try{side()}catch(e){}who()}
+function who(){if(!TOK)return;document.querySelectorAll('#sb .prof b,#lab b.un').forEach(e=>{if(e.textContent!=='Admin')e.textContent='Admin'});document.querySelectorAll('#sb .pav,#lab .av').forEach(e=>{if(e.textContent!=='A')e.textContent='A'})}
+['#sb','#lab'].forEach(q=>{const e=$(q);e&&new MutationObserver(who).observe(e,{childList:true,subtree:true})});
 /* ---------- student name + who's online ---------- */
 function hello(){const nm=localStorage.getItem('sl_labuser');if(!ok||!nm||sessionStorage.getItem('sl_tok'))return;let id=localStorage.getItem('sl_did');if(!id){id=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('sl_did',id)}
  const n=!sessionStorage.getItem('sl_h');sessionStorage.setItem('sl_h','1');api({a:'hello',id,name:nm,cls:localStorage.getItem('sl_labcls')||'',n:n?1:0})}
@@ -1646,10 +1649,10 @@ function ask(){if(!ok||localStorage.getItem('sl_labuser')||sessionStorage.getIte
  if($('#ld')||ov.classList.contains('on')){setTimeout(ask,400);return}sessionStorage.setItem('sl_asked','1');
  const lt=document.documentElement.dataset.theme==='light',bg=lt?'#ffffff':'#14202e',fg=lt?'#1b2b3a':'#e8eef5',ln=lt?'#d3dbe4':'#2f4358',I=`width:100%;margin:6px 0;padding:11px;border-radius:9px;border:1px solid ${ln};background:${lt?'#f5f8fb':'#0e1824'};color:${fg};font:inherit;font-size:16px;box-sizing:border-box;outline:none`;
  const m=document.createElement('div');m.id='sl_ask';m.style.cssText='position:fixed;inset:0;z-index:250;display:flex;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.6);padding:14vh 16px 16px;overflow:auto';
- m.innerHTML=`<div style="background:${bg};color:${fg};border:1px solid ${ln};border-radius:16px;padding:22px;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4)"><h3 style="margin:0 0 4px;font-size:19px;color:${fg}">Welcome to SciLab 👋</h3><p style="margin:0 0 10px;font-size:13px;opacity:.7">Enter your name to start.</p><input id="sn" placeholder="Your name" maxlength="30" autocomplete="name" style="${I}"><input id="sc" placeholder="Class / index no. (optional)" maxlength="30" style="${I}"><p id="se" style="color:#d03b3b;font-size:13px;margin:2px 0;min-height:16px"></p><button id="sg" style="width:100%;padding:12px;border-radius:9px;border:0;background:#1477d1;color:#fff;font:inherit;font-weight:600;cursor:pointer">Start</button></div>`;
- document.body.appendChild(m);setTimeout(()=>$('#sn').focus(),100);
- const go=()=>{const v=$('#sn').value.trim();if(v.length<2){$('#se').textContent='Please enter your name.';$('#sn').focus();return}localStorage.setItem('sl_labuser',v.slice(0,30));localStorage.setItem('sl_labcls',$('#sc').value.trim().slice(0,30));m.remove();hello();try{lang_()}catch(e){}};
- $('#sg').onclick=go;m.addEventListener('keydown',e=>{if(e.key=='Enter')go()})}
+ m.innerHTML=`<div style="background:${bg};color:${fg};border:1px solid ${ln};border-radius:16px;padding:22px;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4)"><h3 style="margin:0 0 4px;font-size:19px;color:${fg}">Welcome to SciLab 👋</h3><p style="margin:0 0 10px;font-size:13px;opacity:.7">Enter your name to start.</p><input id="sl_n" placeholder="Your name" maxlength="30" autocomplete="name" style="${I}"><input id="sl_c" placeholder="Class / index no. (optional)" maxlength="30" style="${I}"><p id="sl_e" style="color:#d03b3b;font-size:13px;margin:2px 0;min-height:16px"></p><button id="sl_g" style="width:100%;padding:12px;border-radius:9px;border:0;background:#1477d1;color:#fff;font:inherit;font-weight:600;cursor:pointer">Start</button></div>`;
+ document.body.appendChild(m);setTimeout(()=>m.querySelector('#sl_n').focus(),100);
+ const go=()=>{const v=m.querySelector('#sl_n').value.trim();if(v.length<2){m.querySelector('#sl_e').textContent='Please enter your name.';m.querySelector('#sl_n').focus();return}localStorage.setItem('sl_labuser',v.slice(0,30));localStorage.setItem('sl_labcls',m.querySelector('#sl_c').value.trim().slice(0,30));m.remove();hello();refreshWho();try{$('.br').click()}catch(e){try{lang_()}catch(x){}}};
+ m.querySelector('#sl_g').onclick=go;m.addEventListener('keydown',e=>{if(e.key=='Enter')go()})}
 ov.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.id=='lp2')login()});
 ov.addEventListener('input',e=>{const t=e.target,d=t.dataset;if(d.p)sp(W,d.p,t.value);else if(d.qf){const[j,k,n]=d.qf.split(':'),q=ql()[+j];k=='o'?q.o[+n]=t.value:q[k]=t.value}});
 ov.addEventListener('change',e=>{const t=e.target,d=t.dataset;if(t.id=='qs'){qi=+t.value;draw()}else if(d.qa!=null)ql()[+d.qa].a=+t.value;else if(d.up)upImg(d.up,t.files[0])});
